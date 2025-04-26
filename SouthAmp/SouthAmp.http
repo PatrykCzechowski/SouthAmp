@@ -1,0 +1,6 @@
+@SouthAmp_HostAddress = http://localhost:5151
+
+GET {{SouthAmp_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
