@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using SouthAmp.Application.Interfaces;
 using SouthAmp.Core.Entities;
 using SouthAmp.Core.Interfaces;
 
 namespace SouthAmp.Application.UseCases
 {
-    public class NotificationUseCases
+    public class NotificationUseCases : INotificationUseCases
     {
         private readonly INotificationRepository _notificationRepository;
         public NotificationUseCases(INotificationRepository notificationRepository)

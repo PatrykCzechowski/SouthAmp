@@ -1,3 +1,4 @@
+using SouthAmp.Application.Interfaces;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using SouthAmp.Core.Entities;
@@ -5,7 +6,7 @@ using SouthAmp.Core.Interfaces;
 
 namespace SouthAmp.Application.UseCases
 {
-    public class RoomUseCases
+    public class RoomUseCases : IRoomUseCases
     {
         private readonly IRoomRepository _roomRepository;
         public RoomUseCases(IRoomRepository roomRepository)

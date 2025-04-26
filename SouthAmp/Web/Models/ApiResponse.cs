@@ -15,6 +15,7 @@ namespace SouthAmp.Web.Models
         {
             Success = false;
             Message = message;
+            Data = default;
         }
     }
 }

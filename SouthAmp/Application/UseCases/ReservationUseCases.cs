@@ -3,10 +3,11 @@ using System.Threading.Tasks;
 using SouthAmp.Core.Entities;
 using SouthAmp.Core.Interfaces;
 using System.Linq;
+using SouthAmp.Application.Interfaces;
 
 namespace SouthAmp.Application.UseCases
 {
-    public class ReservationUseCases
+    public class ReservationUseCases : IReservationUseCases
     {
         private readonly IReservationRepository _reservationRepository;
         private readonly IRoomRepository _roomRepository;

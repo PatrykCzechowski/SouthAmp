@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using SouthAmp.Application.UseCases;
+using SouthAmp.Application.Interfaces;
 using SouthAmp.Application.DTOs;
 using SouthAmp.Core.Entities;
 using Microsoft.AspNetCore.Authorization;
@@ -13,11 +13,11 @@ namespace SouthAmp.Web.Controllers
     [Route("api/[controller]")]
     public class NotificationsController : ControllerBase
     {
-        private readonly NotificationUseCases _notificationUseCases;
+        private readonly INotificationUseCases _useCases;
         private readonly IMapper _mapper;
-        public NotificationsController(NotificationUseCases notificationUseCases, IMapper mapper)
+        public NotificationsController(INotificationUseCases useCases, IMapper mapper)
         {
-            _notificationUseCases = notificationUseCases;
+            _useCases = useCases;
             _mapper = mapper;
         }
 
@@ -28,7 +28,7 @@ namespace SouthAmp.Web.Controllers
             var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (string.IsNullOrEmpty(userIdStr)) return Unauthorized();
             var userId = int.Parse(userIdStr);
-            var notifications = await _notificationUseCases.GetUserNotificationsAsync(userId);
+            var notifications = await _useCases.GetUserNotificationsAsync(userId);
             return Ok(new ApiResponse<IEnumerable<NotificationDto>>(_mapper.Map<IEnumerable<NotificationDto>>(notifications)));
         }
 
@@ -36,7 +36,7 @@ namespace SouthAmp.Web.Controllers
         [Authorize]
         public async Task<IActionResult> MarkAsRead(int id)
         {
-            await _notificationUseCases.MarkAsReadAsync(id);
+            await _useCases.MarkAsReadAsync(id);
             return Ok(new ApiResponse<string>("Notification marked as read"));
         }
 
@@ -45,7 +45,7 @@ namespace SouthAmp.Web.Controllers
         public async Task<IActionResult> SendNotification([FromBody] NotificationDto dto)
         {
             var notification = _mapper.Map<Notification>(dto);
-            var result = await _notificationUseCases.AddNotificationAsync(notification);
+            var result = await _useCases.AddNotificationAsync(notification);
             return Ok(new ApiResponse<NotificationDto>(_mapper.Map<NotificationDto>(result)));
         }
     }

@@ -16,7 +16,7 @@ namespace SouthAmp.Infrastructure.Services
         {
             _configuration = configuration;
         }
-        public string GenerateToken(AppUser user, IList<string> roles)
+        public virtual string GenerateToken(AppUser user, IList<string> roles)
         {
             var claims = new List<Claim>
             {

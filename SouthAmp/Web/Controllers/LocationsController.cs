@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using SouthAmp.Application.UseCases;
+using SouthAmp.Application.Interfaces;
 using SouthAmp.Application.DTOs;
 using SouthAmp.Core.Entities;
 using Microsoft.AspNetCore.Authorization;
@@ -12,11 +12,11 @@ namespace SouthAmp.Web.Controllers
     [Route("api/[controller]")]
     public class LocationsController : ControllerBase
     {
-        private readonly LocationUseCases _locationUseCases;
+        private readonly ILocationUseCases _useCases;
         private readonly IMapper _mapper;
-        public LocationsController(LocationUseCases locationUseCases, IMapper mapper)
+        public LocationsController(ILocationUseCases useCases, IMapper mapper)
         {
-            _locationUseCases = locationUseCases;
+            _useCases = useCases;
             _mapper = mapper;
         }
 
@@ -25,7 +25,7 @@ namespace SouthAmp.Web.Controllers
         public async Task<IActionResult> AddLocation([FromBody] LocationDto dto)
         {
             var location = _mapper.Map<Location>(dto);
-            var result = await _locationUseCases.AddLocationAsync(location);
+            var result = await _useCases.AddLocationAsync(location);
             return Ok(new ApiResponse<LocationDto>(_mapper.Map<LocationDto>(result)));
         }
 
@@ -33,7 +33,7 @@ namespace SouthAmp.Web.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> GetAllLocations()
         {
-            var locations = await _locationUseCases.GetAllLocationsAsync();
+            var locations = await _useCases.GetAllLocationsAsync();
             return Ok(new ApiResponse<IEnumerable<LocationDto>>(_mapper.Map<IEnumerable<LocationDto>>(locations)));
         }
 
@@ -41,7 +41,7 @@ namespace SouthAmp.Web.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> GetLocationById(int id)
         {
-            var location = await _locationUseCases.GetLocationByIdAsync(id);
+            var location = await _useCases.GetLocationByIdAsync(id);
             if (location == null) return NotFound(new ApiResponse<string>("Location not found"));
             return Ok(new ApiResponse<LocationDto>(_mapper.Map<LocationDto>(location)));
         }
@@ -52,7 +52,7 @@ namespace SouthAmp.Web.Controllers
         {
             var location = _mapper.Map<Location>(dto);
             location.Id = id;
-            await _locationUseCases.UpdateLocationAsync(location);
+            await _useCases.UpdateLocationAsync(location);
             return Ok(new ApiResponse<string>("Location updated"));
         }
 
@@ -60,7 +60,7 @@ namespace SouthAmp.Web.Controllers
         [Authorize(Roles = "admin,provider")]
         public async Task<IActionResult> DeleteLocation(int id)
         {
-            await _locationUseCases.DeleteLocationAsync(id);
+            await _useCases.DeleteLocationAsync(id);
             return Ok(new ApiResponse<string>("Location deleted"));
         }
     }

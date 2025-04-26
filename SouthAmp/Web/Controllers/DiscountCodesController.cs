@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using SouthAmp.Application.Interfaces;
 using SouthAmp.Application.UseCases;
 using SouthAmp.Application.DTOs;
 using SouthAmp.Core.Entities;
@@ -12,11 +13,11 @@ namespace SouthAmp.Web.Controllers
     [Route("api/[controller]")]
     public class DiscountCodesController : ControllerBase
     {
-        private readonly DiscountCodeUseCases _discountCodeUseCases;
+        private readonly IDiscountCodeUseCases _useCases;
         private readonly IMapper _mapper;
-        public DiscountCodesController(DiscountCodeUseCases discountCodeUseCases, IMapper mapper)
+        public DiscountCodesController(IDiscountCodeUseCases useCases, IMapper mapper)
         {
-            _discountCodeUseCases = discountCodeUseCases;
+            _useCases = useCases;
             _mapper = mapper;
         }
 
@@ -25,7 +26,7 @@ namespace SouthAmp.Web.Controllers
         public async Task<IActionResult> CreateDiscountCode([FromBody] DiscountCodeDto dto)
         {
             var code = _mapper.Map<DiscountCode>(dto);
-            var result = await _discountCodeUseCases.CreateDiscountCodeAsync(code);
+            var result = await _useCases.CreateDiscountCodeAsync(code);
             return Ok(new ApiResponse<DiscountCodeDto>(_mapper.Map<DiscountCodeDto>(result)));
         }
 
@@ -33,7 +34,7 @@ namespace SouthAmp.Web.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> VerifyCode(string code)
         {
-            var discount = await _discountCodeUseCases.GetByCodeAsync(code);
+            var discount = await _useCases.GetByCodeAsync(code);
             if (discount == null) return NotFound(new ApiResponse<string>("Code not found"));
             return Ok(new ApiResponse<DiscountCodeDto>(_mapper.Map<DiscountCodeDto>(discount)));
         }
@@ -42,7 +43,7 @@ namespace SouthAmp.Web.Controllers
         [Authorize]
         public async Task<IActionResult> UseCode(string code)
         {
-            await _discountCodeUseCases.UseCodeAsync(code);
+            await _useCases.UseCodeAsync(code);
             return Ok(new ApiResponse<string>("Code used"));
         }
     }

@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using SouthAmp.Application.Interfaces;
 using SouthAmp.Core.Entities;
 using SouthAmp.Core.Interfaces;
 
 namespace SouthAmp.Application.UseCases
 {
-    public class AdminUseCases
+    public class AdminUseCases : IAdminUseCases
     {
         private readonly IUserRepository _userRepository;
         private readonly IHotelRepository _hotelRepository;

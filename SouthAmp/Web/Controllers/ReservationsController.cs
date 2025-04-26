@@ -1,3 +1,4 @@
+using SouthAmp.Application.Interfaces;
 using SouthAmp.Application.UseCases;
 using SouthAmp.Application.DTOs;
 using SouthAmp.Core.Entities;
@@ -13,11 +14,11 @@ namespace SouthAmp.Web.Controllers
     [Route("api/[controller]")]
     public class ReservationsController : ControllerBase
     {
-        private readonly ReservationUseCases _reservationUseCases;
+        private readonly IReservationUseCases _useCases;
         private readonly IMapper _mapper;
-        public ReservationsController(ReservationUseCases reservationUseCases, IMapper mapper)
+        public ReservationsController(IReservationUseCases useCases, IMapper mapper)
         {
-            _reservationUseCases = reservationUseCases;
+            _useCases = useCases;
             _mapper = mapper;
         }
 
@@ -29,7 +30,7 @@ namespace SouthAmp.Web.Controllers
             var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (string.IsNullOrEmpty(userIdStr)) return Unauthorized();
             reservation.UserId = int.Parse(userIdStr);
-            var result = await _reservationUseCases.CreateReservationAsync(reservation);
+            var result = await _useCases.CreateReservationAsync(reservation);
             return Ok(new ApiResponse<ReservationDto>(_mapper.Map<ReservationDto>(result)));
         }
 
@@ -40,7 +41,7 @@ namespace SouthAmp.Web.Controllers
             var userIdStr2 = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (string.IsNullOrEmpty(userIdStr2)) return Unauthorized();
             var userId = int.Parse(userIdStr2);
-            var reservations = await _reservationUseCases.GetUserReservationsAsync(userId);
+            var reservations = await _useCases.GetUserReservationsAsync(userId);
             return Ok(new ApiResponse<IEnumerable<ReservationDto>>(_mapper.Map<IEnumerable<ReservationDto>>(reservations)));
         }
 
@@ -48,7 +49,7 @@ namespace SouthAmp.Web.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> CheckAvailability([FromBody] CheckAvailabilityRequest req)
         {
-            var available = await _reservationUseCases.CheckAvailabilityAsync(req.RoomId, req.StartDate, req.EndDate);
+            var available = await _useCases.CheckAvailabilityAsync(req.RoomId, req.StartDate, req.EndDate);
             return Ok(new ApiResponse<bool>(available));
         }
 
@@ -56,7 +57,7 @@ namespace SouthAmp.Web.Controllers
         [Authorize]
         public async Task<IActionResult> CancelReservation(int id)
         {
-            await _reservationUseCases.CancelReservationAsync(id);
+            await _useCases.CancelReservationAsync(id);
             return Ok(new ApiResponse<string>("Reservation cancelled"));
         }
 
@@ -64,7 +65,7 @@ namespace SouthAmp.Web.Controllers
         [Authorize]
         public async Task<IActionResult> ChangeReservationDate(int id, [FromBody] ChangeDateRequest req)
         {
-            await _reservationUseCases.ChangeReservationDateAsync(id, req.NewStart, req.NewEnd);
+            await _useCases.ChangeReservationDateAsync(id, req.NewStart, req.NewEnd);
             return Ok(new ApiResponse<string>("Reservation date changed"));
         }
 

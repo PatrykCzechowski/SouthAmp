@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using SouthAmp.Application.Interfaces;
 using SouthAmp.Application.UseCases;
 using SouthAmp.Application.DTOs;
 using SouthAmp.Core.Entities;
@@ -13,11 +14,11 @@ namespace SouthAmp.Web.Controllers
     [Route("api/[controller]")]
     public class ReportsController : ControllerBase
     {
-        private readonly ReportUseCases _reportUseCases;
+        private readonly IReportUseCases _useCases;
         private readonly IMapper _mapper;
-        public ReportsController(ReportUseCases reportUseCases, IMapper mapper)
+        public ReportsController(IReportUseCases useCases, IMapper mapper)
         {
-            _reportUseCases = reportUseCases;
+            _useCases = useCases;
             _mapper = mapper;
         }
 
@@ -29,7 +30,7 @@ namespace SouthAmp.Web.Controllers
             var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (string.IsNullOrEmpty(userIdStr)) return Unauthorized();
             report.UserId = int.Parse(userIdStr);
-            var result = await _reportUseCases.AddReportAsync(report);
+            var result = await _useCases.AddReportAsync(report);
             return Ok(new ApiResponse<ReportDto>(_mapper.Map<ReportDto>(result)));
         }
 
@@ -40,7 +41,7 @@ namespace SouthAmp.Web.Controllers
             var userIdStr2 = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (string.IsNullOrEmpty(userIdStr2)) return Unauthorized();
             var userId = int.Parse(userIdStr2);
-            var reports = await _reportUseCases.GetUserReportsAsync(userId);
+            var reports = await _useCases.GetUserReportsAsync(userId);
             return Ok(new ApiResponse<IEnumerable<ReportDto>>(_mapper.Map<IEnumerable<ReportDto>>(reports)));
         }
 
@@ -48,7 +49,7 @@ namespace SouthAmp.Web.Controllers
         [Authorize(Roles = "admin")]
         public async Task<IActionResult> GetAllReports()
         {
-            var reports = await _reportUseCases.GetAllReportsAsync();
+            var reports = await _useCases.GetAllReportsAsync();
             return Ok(new ApiResponse<IEnumerable<ReportDto>>(_mapper.Map<IEnumerable<ReportDto>>(reports)));
         }
 
@@ -56,7 +57,9 @@ namespace SouthAmp.Web.Controllers
         [Authorize(Roles = "admin")]
         public async Task<IActionResult> RespondToReport(int id, [FromBody] RespondRequest req)
         {
-            await _reportUseCases.RespondToReportAsync(id, req.Response);
+            if (req.Response == null)
+                return BadRequest(new ApiResponse<string>("Response cannot be null"));
+            await _useCases.RespondToReportAsync(id, req.Response);
             return Ok(new ApiResponse<string>("Report responded"));
         }
 

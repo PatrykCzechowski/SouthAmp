@@ -1,12 +1,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using SouthAmp.Application.Interfaces;
 using SouthAmp.Core.Entities;
 using SouthAmp.Core.Interfaces;
 
 namespace SouthAmp.Application.UseCases
 {
-    public class ReviewUseCases
+    public class ReviewUseCases : IReviewUseCases
     {
         private readonly IReviewRepository _reviewRepository;
         public ReviewUseCases(IReviewRepository reviewRepository)

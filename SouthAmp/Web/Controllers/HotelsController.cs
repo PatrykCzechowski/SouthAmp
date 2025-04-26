@@ -5,6 +5,7 @@ using SouthAmp.Core.Entities;
 using Microsoft.AspNetCore.Authorization;
 using AutoMapper;
 using SouthAmp.Web.Models;
+using SouthAmp.Core.Interfaces;
 
 namespace SouthAmp.Web.Controllers
 {
