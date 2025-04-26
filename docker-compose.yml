@@ -1,0 +1,6 @@
+﻿services:
+  southamp:
+    image: southamp
+    build:
+      context: .
+      dockerfile: SouthAmp/Dockerfile
