@@ -1,4 +1,5 @@
 using FluentValidation;
+using SouthAmp.Application.DTOs;
 using SouthAmp.Web.Controllers;
 
 namespace SouthAmp.Web.Models

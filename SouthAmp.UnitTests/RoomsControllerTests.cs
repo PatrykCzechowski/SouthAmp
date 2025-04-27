@@ -11,7 +11,7 @@ using SouthAmp.Web.Controllers;
 using SouthAmp.Web.Models;
 using Xunit;
 
-namespace SouthAmp.Tests
+namespace SouthAmp.UnitTests
 {
     public class RoomsControllerTests
     {
@@ -91,7 +91,7 @@ namespace SouthAmp.Tests
         [Fact]
         public async Task GetRoomById_ReturnsNotFound_WhenNull()
         {
-            _useCasesMock.Setup(u => u.GetRoomByIdAsync(1)).ReturnsAsync((Room)null);
+            _useCasesMock.Setup(u => u.GetRoomByIdAsync(1))!.ReturnsAsync((Room)null);
             var result = await _controller.GetRoomById(1);
             var notFound = Assert.IsType<NotFoundObjectResult>(result);
             var apiResponse = Assert.IsType<ApiResponse<string>>(notFound.Value);

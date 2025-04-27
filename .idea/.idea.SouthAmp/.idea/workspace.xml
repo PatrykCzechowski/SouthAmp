@@ -10,70 +10,68 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fd4445da-758e-450e-8aeb-6dcadbc1fe18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/SouthAmp.Infrastructure/Data/AppDbContext.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SouthAmp.Infrastructure/Data/AppDbContextFactory.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SouthAmp.Tests/AdminControllerTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SouthAmp.Tests/AdminUseCasesTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SouthAmp.Tests/DiscountCodeUseCasesTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SouthAmp.Tests/DiscountCodesControllerTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SouthAmp.Tests/LocationUseCasesTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SouthAmp.Tests/LocationsControllerTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SouthAmp.Tests/NotificationUseCasesTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SouthAmp.Tests/NotificationsControllerTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SouthAmp.Tests/PaymentUseCasesTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SouthAmp.Tests/PaymentsControllerTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SouthAmp.Tests/ReportUseCasesTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SouthAmp.Tests/ReportsControllerTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SouthAmp.Tests/ReservationUseCasesTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SouthAmp.Tests/ReservationsControllerTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SouthAmp.Tests/ReviewUseCasesTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SouthAmp.Tests/ReviewsControllerTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SouthAmp.Tests/RoomUseCasesTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SouthAmp.Tests/RoomsControllerTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SouthAmp.Tests/UsersControllerTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SouthAmp.sln.DotSettings.user" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SouthAmp/Application/Interfaces/IAdminUseCases.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SouthAmp/Application/Interfaces/IDiscountCodeUseCases.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SouthAmp/Application/Interfaces/IHotelUseCases.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SouthAmp/Application/Interfaces/ILocationUseCases.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SouthAmp/Application/Interfaces/INotificationUseCases.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SouthAmp/Application/Interfaces/IPaymentUseCases.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SouthAmp/Application/Interfaces/IReportUseCases.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SouthAmp/Application/Interfaces/IReservationUseCases.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SouthAmp/Application/Interfaces/IReviewUseCases.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SouthAmp/Application/Interfaces/IRoomUseCases.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SouthAmp/Migrations/20250426194245_InitialCreate.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SouthAmp/Migrations/20250426194245_InitialCreate.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SouthAmp/Migrations/AppDbContextModelSnapshot.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmp.UnitTests/AdminControllerTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmp.UnitTests/AdminUseCasesTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmp.UnitTests/DiscountCodeUseCasesTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmp.UnitTests/DiscountCodesControllerTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmp.UnitTests/HotelUseCasesTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmp.UnitTests/LocationUseCasesTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmp.UnitTests/LocationsControllerTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmp.UnitTests/NotificationUseCasesTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmp.UnitTests/NotificationsControllerTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmp.UnitTests/PaymentUseCasesTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmp.UnitTests/PaymentsControllerTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmp.UnitTests/ReportUseCasesTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmp.UnitTests/ReportsControllerTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmp.UnitTests/ReservationUseCasesTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmp.UnitTests/ReservationsControllerTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmp.UnitTests/ReviewUseCasesTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmp.UnitTests/ReviewsControllerTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmp.UnitTests/RoomUseCasesTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmp.UnitTests/RoomsControllerTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmp.UnitTests/UsersControllerTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmp/Application/DTOs/UserRequests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmp/Migrations/20250426220504_AddHotelDbSet.Designer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmp/Migrations/20250426220504_AddHotelDbSet.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SouthAmp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SouthAmp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SouthAmp.Tests/HotelsControllerIntegrationTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp.Tests/HotelsControllerIntegrationTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SouthAmp.Tests/SouthAmp.Tests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp.Tests/SouthAmp.Tests.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SouthAmp/Application/UseCases/AdminUseCases.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/Application/UseCases/AdminUseCases.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SouthAmp/Application/UseCases/DiscountCodeUseCases.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/Application/UseCases/DiscountCodeUseCases.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SouthAmp/Application/UseCases/HotelUseCases.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/Application/UseCases/HotelUseCases.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SouthAmp/Application/UseCases/LocationUseCases.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/Application/UseCases/LocationUseCases.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SouthAmp/Application/UseCases/NotificationUseCases.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/Application/UseCases/NotificationUseCases.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SouthAmp/Application/UseCases/PaymentUseCases.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/Application/UseCases/PaymentUseCases.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SouthAmp/Application/UseCases/ReportUseCases.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/Application/UseCases/ReportUseCases.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SouthAmp/Application/UseCases/ReservationUseCases.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/Application/UseCases/ReservationUseCases.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SouthAmp/Application/UseCases/ReviewUseCases.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/Application/UseCases/ReviewUseCases.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SouthAmp/Application/UseCases/RoomUseCases.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/Application/UseCases/RoomUseCases.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SouthAmp/Infrastructure/Identity/AppRole.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/Infrastructure/Identity/AppRole.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SouthAmp/Infrastructure/Services/JwtTokenService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/Infrastructure/Services/JwtTokenService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SouthAmp/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SouthAmp/SouthAmp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/SouthAmp.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SouthAmp.Infrastructure/Data/AppDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp.Infrastructure/Data/AppDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SouthAmp.Tests/AdminControllerTests.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SouthAmp.Tests/AdminUseCasesTests.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SouthAmp.Tests/DiscountCodeUseCasesTests.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SouthAmp.Tests/DiscountCodesControllerTests.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SouthAmp.Tests/HotelUseCasesTests.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SouthAmp.Tests/LocationUseCasesTests.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SouthAmp.Tests/LocationsControllerTests.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SouthAmp.Tests/NotificationUseCasesTests.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SouthAmp.Tests/NotificationsControllerTests.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SouthAmp.Tests/PaymentUseCasesTests.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SouthAmp.Tests/PaymentsControllerTests.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SouthAmp.Tests/ReportUseCasesTests.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SouthAmp.Tests/ReportsControllerTests.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SouthAmp.Tests/ReservationUseCasesTests.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SouthAmp.Tests/ReservationsControllerTests.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SouthAmp.Tests/ReviewUseCasesTests.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SouthAmp.Tests/ReviewsControllerTests.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SouthAmp.Tests/RoomUseCasesTests.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SouthAmp.Tests/RoomsControllerTests.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SouthAmp.Tests/SouthAmp.Tests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp.UnitTests/SouthAmp.UnitTests.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SouthAmp.Tests/UsersControllerTests.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SouthAmp.sln" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SouthAmp.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SouthAmp/Application/DTOs/UserDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/Application/DTOs/UserDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SouthAmp/Infrastructure/Data/AppDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/Infrastructure/Data/AppDbContext.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SouthAmp/Web/Controllers/AdminController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/Web/Controllers/AdminController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SouthAmp/Web/Controllers/DiscountCodesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/Web/Controllers/DiscountCodesController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SouthAmp/Web/Controllers/HotelsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/Web/Controllers/HotelsController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SouthAmp/Web/Controllers/LocationsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/Web/Controllers/LocationsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SouthAmp/Web/Controllers/NotificationsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/Web/Controllers/NotificationsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SouthAmp/Web/Controllers/PaymentsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/Web/Controllers/PaymentsController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SouthAmp/Web/Controllers/ReportsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/Web/Controllers/ReportsController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SouthAmp/Web/Controllers/ReservationsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/Web/Controllers/ReservationsController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SouthAmp/Web/Controllers/ReviewsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/Web/Controllers/ReviewsController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SouthAmp/Web/Controllers/RoomsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/Web/Controllers/RoomsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SouthAmp/Web/Models/ApiResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/Web/Models/ApiResponse.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SouthAmp/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/appsettings.Development.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SouthAmp/Web/Controllers/UsersController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/Web/Controllers/UsersController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SouthAmp/Web/Middleware/ExceptionMiddleware.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/Web/Middleware/ExceptionMiddleware.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SouthAmp/Web/Models/LoginRequestValidator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/Web/Models/LoginRequestValidator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SouthAmp/Web/Models/RegisterRequestValidator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/Web/Models/RegisterRequestValidator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SouthAmp/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/appsettings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -89,11 +87,17 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/26c8a42d9eb73c40854edcc72b47c4b67120df4a818b5dc9d7a605eb7a28eda/DefaultEngineInvoker.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/829d6ac6e62b9bee9ef8e79e827d87d0c31a7c2eefbc354135d9a8f2c4deb/Mapper.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SouthAmp.UnitTests/AdminControllerIntegrationTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SouthAmp.UnitTests/AdminControllerTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SouthAmp.UnitTests/AdminUseCasesTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SouthAmp.UnitTests/LocationsControllerTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SouthAmp.UnitTests/RoomsControllerTests.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
-  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "isMigrated": true
-}]]></component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="SWEA" />
   </component>
@@ -109,30 +113,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Launch Settings Profile.SouthAmp: IIS Express.executor": "Run",
-    "2badb8c9-b4b2-439f-8a1f-68bc48bdf836.executor": "Debug",
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.SouthAmp: IIS Express.executor&quot;: &quot;Run&quot;,
+    &quot;2badb8c9-b4b2-439f-8a1f-68bc48bdf836.executor&quot;: &quot;Debug&quot;,
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\patcz\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache",
-      "C:\\Users\\patcz\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache",
-      "C:\\Users\\patcz\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\patcz\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\patcz\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\patcz\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.SouthAmp: IIS Express">
     <configuration name="SouthAmp: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/SouthAmp/SouthAmp.csproj" />
@@ -232,7 +236,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1745675547277</updated>
-      <workItem from="1745675549099" duration="21641000" />
+      <workItem from="1745675549099" duration="23447000" />
+      <workItem from="1745743413144" duration="5073000" />
+      <workItem from="1745758747615" duration="1186000" />
     </task>
     <servers />
   </component>
@@ -243,24 +249,5 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/SouthAmp.Tests/HotelsControllerIntegrationTests.cs</url>
-          <line>18</line>
-          <properties documentPath="C:\Users\patcz\RiderProjects\SouthAmp\SouthAmp.Tests\HotelsControllerIntegrationTests.cs" containingFunctionPresentation="Method 'GetAllHotels_ShouldReturnOk'">
-            <startOffsets>
-              <option value="580" />
-            </startOffsets>
-            <endOffsets>
-              <option value="617" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

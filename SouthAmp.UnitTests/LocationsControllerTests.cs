@@ -11,7 +11,7 @@ using SouthAmp.Web.Controllers;
 using SouthAmp.Web.Models;
 using Xunit;
 
-namespace SouthAmp.Tests
+namespace SouthAmp.UnitTests
 {
     public class LocationsControllerTests
     {
@@ -68,7 +68,7 @@ namespace SouthAmp.Tests
         [Fact]
         public async Task GetLocationById_ReturnsNotFound_WhenNull()
         {
-            _useCasesMock.Setup(u => u.GetLocationByIdAsync(1)).ReturnsAsync((Location)null);
+            _useCasesMock.Setup(u => u.GetLocationByIdAsync(1))!.ReturnsAsync((Location)null);
             var result = await _controller.GetLocationById(1);
             var notFound = Assert.IsType<NotFoundObjectResult>(result);
             var apiResponse = Assert.IsType<ApiResponse<string>>(notFound.Value);

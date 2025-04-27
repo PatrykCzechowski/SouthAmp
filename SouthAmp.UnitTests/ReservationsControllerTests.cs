@@ -14,7 +14,7 @@ using SouthAmp.Web.Controllers;
 using SouthAmp.Web.Models;
 using Xunit;
 
-namespace SouthAmp.Tests
+namespace SouthAmp.UnitTests
 {
     public class ReservationsControllerTests
     {

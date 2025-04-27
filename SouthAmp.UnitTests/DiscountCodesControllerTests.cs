@@ -10,7 +10,7 @@ using SouthAmp.Web.Controllers;
 using SouthAmp.Web.Models;
 using Xunit;
 
-namespace SouthAmp.Tests
+namespace SouthAmp.UnitTests
 {
     public class DiscountCodesControllerTests
     {
@@ -54,7 +54,7 @@ namespace SouthAmp.Tests
         [Fact]
         public async Task VerifyCode_ReturnsNotFound_WhenNull()
         {
-            _useCasesMock.Setup(u => u.GetByCodeAsync("ABC")).ReturnsAsync((DiscountCode)null);
+            _useCasesMock.Setup(u => u.GetByCodeAsync("ABC"))!.ReturnsAsync((DiscountCode)null);
             var result = await _controller.VerifyCode("ABC");
             var notFound = Assert.IsType<NotFoundObjectResult>(result);
             var apiResponse = Assert.IsType<ApiResponse<string>>(notFound.Value);

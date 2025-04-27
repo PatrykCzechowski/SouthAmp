@@ -6,7 +6,7 @@ using SouthAmp.Core.Entities;
 using SouthAmp.Core.Interfaces;
 using Xunit;
 
-namespace SouthAmp.Tests
+namespace SouthAmp.UnitTests
 {
     public class AdminUseCasesTests
     {

@@ -11,26 +11,18 @@ namespace SouthAmp.Web.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class ReviewsController : ControllerBase
+    public class ReviewsController(IReviewUseCases useCases, IMapper mapper) : ControllerBase
     {
-        private readonly IReviewUseCases _useCases;
-        private readonly IMapper _mapper;
-        public ReviewsController(IReviewUseCases useCases, IMapper mapper)
-        {
-            _useCases = useCases;
-            _mapper = mapper;
-        }
-
         [HttpPost]
         [Authorize]
         public async Task<IActionResult> AddReview([FromBody] ReviewDto dto)
         {
-            var review = _mapper.Map<Review>(dto);
+            var review = mapper.Map<Review>(dto);
             var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (string.IsNullOrEmpty(userIdStr)) return Unauthorized();
             review.UserId = int.Parse(userIdStr);
-            var result = await _useCases.AddReviewAsync(review);
-            return Ok(new ApiResponse<ReviewDto>(_mapper.Map<ReviewDto>(result)));
+            var result = await useCases.AddReviewAsync(review);
+            return Ok(new ApiResponse<ReviewDto>(mapper.Map<ReviewDto>(result)));
         }
 
         [HttpPut("{id}")]
@@ -39,10 +31,10 @@ namespace SouthAmp.Web.Controllers
         {
             var userIdStr2 = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (string.IsNullOrEmpty(userIdStr2)) return Unauthorized();
-            var review = _mapper.Map<Review>(dto);
+            var review = mapper.Map<Review>(dto);
             review.Id = id;
             review.UserId = int.Parse(userIdStr2);
-            await _useCases.UpdateReviewAsync(review);
+            await useCases.UpdateReviewAsync(review);
             return Ok(new ApiResponse<string>("Review updated"));
         }
 
@@ -50,7 +42,7 @@ namespace SouthAmp.Web.Controllers
         [Authorize]
         public async Task<IActionResult> DeleteReview(int id)
         {
-            await _useCases.DeleteReviewAsync(id);
+            await useCases.DeleteReviewAsync(id);
             return Ok(new ApiResponse<string>("Review deleted"));
         }
 
@@ -58,24 +50,25 @@ namespace SouthAmp.Web.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> GetReviewsByHotelId(int hotelId)
         {
-            var reviews = await _useCases.GetReviewsByHotelIdAsync(hotelId);
-            return Ok(new ApiResponse<IEnumerable<ReviewDto>>(_mapper.Map<IEnumerable<ReviewDto>>(reviews)));
+            var reviews = await useCases.GetReviewsByHotelIdAsync(hotelId);
+            return Ok(new ApiResponse<IEnumerable<ReviewDto>>(mapper.Map<IEnumerable<ReviewDto>>(reviews)));
         }
 
         [HttpGet("{id}")]
         [AllowAnonymous]
         public async Task<IActionResult> GetReviewById(int id)
         {
-            var review = await _useCases.GetReviewByIdAsync(id);
-            if (review == null) return NotFound(new ApiResponse<string>("Review not found"));
-            return Ok(new ApiResponse<ReviewDto>(_mapper.Map<ReviewDto>(review)));
+            var review = await useCases.GetReviewByIdAsync(id);
+            if (review == null)
+                return NotFound(new ApiResponse<string>("Review not found"));
+            return Ok(new ApiResponse<ReviewDto>(mapper.Map<ReviewDto>(review)));
         }
 
         [HttpGet("hotel/{hotelId}/average")]
         [AllowAnonymous]
         public async Task<IActionResult> GetAverageRating(int hotelId)
         {
-            var avg = await _useCases.GetAverageRatingAsync(hotelId);
+            var avg = await useCases.GetAverageRatingAsync(hotelId);
             return Ok(new ApiResponse<double>(avg));
         }
     }

@@ -10,32 +10,24 @@ namespace SouthAmp.Web.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class RoomsController : ControllerBase
+    public class RoomsController(IRoomUseCases useCases, IMapper mapper) : ControllerBase
     {
-        private readonly IRoomUseCases _useCases;
-        private readonly IMapper _mapper;
-        public RoomsController(IRoomUseCases useCases, IMapper mapper)
-        {
-            _useCases = useCases;
-            _mapper = mapper;
-        }
-
         [HttpPost]
         [Authorize(Roles = "provider,admin")]
         public async Task<IActionResult> AddRoom([FromBody] RoomDto dto)
         {
-            var room = _mapper.Map<Room>(dto);
-            var result = await _useCases.AddRoomAsync(room);
-            return Ok(new ApiResponse<RoomDto>(_mapper.Map<RoomDto>(result)));
+            var room = mapper.Map<Room>(dto);
+            var result = await useCases.AddRoomAsync(room);
+            return Ok(new ApiResponse<RoomDto>(mapper.Map<RoomDto>(result)));
         }
 
         [HttpPut("{id}")]
         [Authorize(Roles = "provider,admin")]
         public async Task<IActionResult> UpdateRoom(int id, [FromBody] RoomDto dto)
         {
-            var room = _mapper.Map<Room>(dto);
+            var room = mapper.Map<Room>(dto);
             room.Id = id;
-            await _useCases.UpdateRoomAsync(room);
+            await useCases.UpdateRoomAsync(room);
             return Ok(new ApiResponse<string>("Room updated"));
         }
 
@@ -43,7 +35,7 @@ namespace SouthAmp.Web.Controllers
         [Authorize(Roles = "provider,admin")]
         public async Task<IActionResult> DeleteRoom(int id)
         {
-            await _useCases.DeleteRoomAsync(id);
+            await useCases.DeleteRoomAsync(id);
             return Ok(new ApiResponse<string>("Room deleted"));
         }
 
@@ -51,17 +43,18 @@ namespace SouthAmp.Web.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> GetRoomsByHotelId(int hotelId)
         {
-            var rooms = await _useCases.GetRoomsByHotelIdAsync(hotelId);
-            return Ok(new ApiResponse<IEnumerable<RoomDto>>(_mapper.Map<IEnumerable<RoomDto>>(rooms)));
+            var rooms = await useCases.GetRoomsByHotelIdAsync(hotelId);
+            return Ok(new ApiResponse<IEnumerable<RoomDto>>(mapper.Map<IEnumerable<RoomDto>>(rooms)));
         }
 
         [HttpGet("{id}")]
         [AllowAnonymous]
         public async Task<IActionResult> GetRoomById(int id)
         {
-            var room = await _useCases.GetRoomByIdAsync(id);
-            if (room == null) return NotFound(new ApiResponse<string>("Room not found"));
-            return Ok(new ApiResponse<RoomDto>(_mapper.Map<RoomDto>(room)));
+            var room = await useCases.GetRoomByIdAsync(id);
+            if (room == null)
+                return NotFound(new ApiResponse<string>("Room not found"));
+            return Ok(new ApiResponse<RoomDto>(mapper.Map<RoomDto>(room)));
         }
     }
 }

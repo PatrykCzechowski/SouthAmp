@@ -6,12 +6,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Primitives;
 using Moq;
+using SouthAmp.Application.DTOs;
 using SouthAmp.Infrastructure.Identity;
 using SouthAmp.Infrastructure.Services;
 using SouthAmp.Web.Controllers;
 using Xunit;
 
-namespace SouthAmp.Tests
+namespace SouthAmp.UnitTests
 {
     public class UsersControllerTests
     {

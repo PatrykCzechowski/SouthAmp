@@ -1,7 +1,5 @@
 using SouthAmp.Application.Interfaces;
-using SouthAmp.Application.UseCases;
 using SouthAmp.Application.DTOs;
-using SouthAmp.Core.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
@@ -12,77 +10,69 @@ namespace SouthAmp.Web.Controllers
     [ApiController]
     [Route("api/[controller]")]
     [Authorize(Roles = "admin")]
-    public class AdminController : ControllerBase
+    public class AdminController(IAdminUseCases useCases, IMapper mapper) : ControllerBase
     {
-        private readonly IAdminUseCases _useCases;
-        private readonly IMapper _mapper;
-        public AdminController(IAdminUseCases useCases, IMapper mapper)
-        {
-            _useCases = useCases;
-            _mapper = mapper;
-        }
-
         [HttpGet("users")]
         public async Task<IActionResult> GetAllUsers()
         {
-            var users = await _useCases.GetAllUsersAsync();
-            return Ok(new ApiResponse<IEnumerable<UserDto>>(_mapper.Map<IEnumerable<UserDto>>(users)));
+            var users = await useCases.GetAllUsersAsync();
+            return Ok(new ApiResponse<IEnumerable<UserDto>>(mapper.Map<IEnumerable<UserDto>>(users)));
         }
 
         [HttpPost("users/{id}/ban")]
         public async Task<IActionResult> BanUser(int id)
         {
-            await _useCases.BanUserAsync(id);
+            await useCases.BanUserAsync(id);
             return Ok(new ApiResponse<string>("User banned"));
         }
 
         [HttpPost("users/{id}/activate")]
         public async Task<IActionResult> ActivateUser(int id)
         {
-            await _useCases.ActivateUserAsync(id);
+            await useCases.ActivateUserAsync(id);
             return Ok(new ApiResponse<string>("User activated"));
         }
 
         [HttpDelete("users/{id}")]
         public async Task<IActionResult> DeleteUser(int id)
         {
-            await _useCases.DeleteUserAsync(id);
+            await useCases.DeleteUserAsync(id);
             return Ok(new ApiResponse<string>("User deleted"));
         }
 
         [HttpGet("hotels")]
         public async Task<IActionResult> GetAllHotels()
         {
-            var hotels = await _useCases.GetAllHotelsAsync();
-            return Ok(new ApiResponse<IEnumerable<HotelDto>>(_mapper.Map<IEnumerable<HotelDto>>(hotels)));
+            var hotels = await useCases.GetAllHotelsAsync();
+            return Ok(new ApiResponse<IEnumerable<HotelDto>>(mapper.Map<IEnumerable<HotelDto>>(hotels)));
         }
 
         [HttpPost("hotels/{id}/moderate")]
         public async Task<IActionResult> ModerateHotel(int id, [FromQuery] bool isActive)
         {
-            await _useCases.ModerateHotelAsync(id, isActive);
+            await useCases.ModerateHotelAsync(id, isActive);
             return Ok(new ApiResponse<string>("Hotel moderated"));
         }
 
         [HttpGet("reviews")]
         public async Task<IActionResult> GetAllReviews()
         {
-            var reviews = await _useCases.GetAllReviewsAsync();
-            return Ok(new ApiResponse<IEnumerable<ReviewDto>>(_mapper.Map<IEnumerable<ReviewDto>>(reviews)));
+            var reviews = await useCases.GetAllReviewsAsync();
+            return Ok(new ApiResponse<IEnumerable<ReviewDto>>(mapper.Map<IEnumerable<ReviewDto>>(reviews)));
         }
 
         [HttpPost("reviews/{id}/moderate")]
         public async Task<IActionResult> ModerateReview(int id, [FromQuery] bool isReported)
         {
-            await _useCases.ModerateReviewAsync(id, isReported);
+            await useCases.ModerateReviewAsync(id, isReported);
             return Ok(new ApiResponse<string>("Review moderated"));
         }
 
         [HttpGet("payments")]
         public async Task<IActionResult> GetAllPayments()
         {
-            var payments = await _useCases.GetAllPaymentsAsync();
-            return Ok(new ApiResponse<IEnumerable<PaymentDto>>(_mapper.Map<IEnumerable<PaymentDto>>(payments)));
+            var payments = await useCases.GetAllPaymentsAsync();
+            return Ok(new ApiResponse<IEnumerable<PaymentDto>>(mapper.Map<IEnumerable<PaymentDto>>(payments)));
         }
     }
 }
