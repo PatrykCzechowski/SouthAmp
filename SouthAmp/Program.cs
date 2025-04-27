@@ -10,10 +10,10 @@ using SouthAmp.Web.Models;
 using SouthAmp.Web.Middleware;
 using AutoMapper;
 using Serilog;
-using SouthAmp.Application.UseCases;
-using SouthAmp.Infrastructure.Services;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using SouthAmp.Application.UseCases;
+using SouthAmp.Infrastructure.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,7 +26,6 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<JwtTokenService>();
 builder.Services.AddScoped<HotelUseCases>();
 builder.Services.AddScoped<RoomUseCases>();
-builder.Services.AddScoped<ReservationUseCases>();
 builder.Services.AddScoped<PaymentUseCases>();
 builder.Services.AddScoped<ReviewUseCases>();
 builder.Services.AddScoped<NotificationUseCases>();
@@ -42,6 +41,8 @@ builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
 builder.Services.AddScoped<IReportRepository, ReportRepository>();
 builder.Services.AddScoped<IDiscountCodeRepository, DiscountCodeRepository>();
 builder.Services.AddScoped<ILocationRepository, LocationRepository>();
+builder.Services.AddScoped<IAuditService, AuditService>();
+builder.Services.AddScoped<IEmailService, EmailService>();
 
 // Identity
 builder.Services.AddIdentity<AppUser, AppRole>(options =>
@@ -56,8 +57,29 @@ builder.Services.AddIdentity<AppUser, AppRole>(options =>
     .AddEntityFrameworkStores<AppDbContext>()
     .AddDefaultTokenProviders();
 
+var logger = new LoggerConfiguration()
+    .WriteTo.Console()
+    .WriteTo.PostgreSQL(
+        connectionString: connectionString,
+        tableName: "logs",
+        needAutoCreateTable: true,
+        columnOptions: null // default columns
+    )
+    .Enrich.FromLogContext()
+    .CreateLogger();
+
+Log.Logger = logger;
+builder.Host.UseSerilog();
+
+// Poprawka: użyj ILoggerFactory do loggera Microsoft.Extensions.Logging
+var loggerFactory = LoggerFactory.Create(builder =>
+{
+    builder.AddSerilog();
+});
+var msLogger = loggerFactory.CreateLogger("JwtKeyProvider");
+
 // JWT
-var jwtKey = builder.Configuration["Jwt:Key"] ?? "dev_secret_key";
+var jwtKey = JwtKeyProvider.GetJwtKey(builder.Configuration, msLogger);
 var jwtIssuer = builder.Configuration["Jwt:Issuer"] ?? "SouthAmp";
 var jwtAudience = builder.Configuration["Jwt:Audience"] ?? "SouthAmpAudience";
 var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey));
@@ -86,7 +108,7 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new() { Title = "SouthAmp API", Version = "v1" });
+    c.SwaggerDoc("v1", new() { Title = "SouthAmp API", Version = "v1", Description = "Booking.com clone API. All endpoints require JWT authentication unless marked as [AllowAnonymous]." });
     c.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
     {
         Description = "JWT Authorization header using the Bearer scheme. Example: 'Bearer {token}'",
@@ -106,60 +128,86 @@ builder.Services.AddSwaggerGen(c =>
                     Id = "Bearer"
                 }
             },
-            new string[] {}
+            Array.Empty<string>()
         }
     });
+    // c.EnableAnnotations(); // Usunięto, jeśli nie masz Swashbuckle.Annotations
+    c.CustomSchemaIds(type => type.FullName);
+    // Add XML comments if available
+    var xmlFile = $"SouthAmp.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+    if (File.Exists(xmlPath))
+        c.IncludeXmlComments(xmlPath);
 });
 
-var app = builder.Build();
+// builder.Services.AddApiVersioning(options => // Wykomentowano, jeśli nie masz pakietu versioningu
+// {
+//     options.DefaultApiVersion = new Microsoft.AspNetCore.Mvc.ApiVersion(1, 0);
+//     options.AssumeDefaultVersionWhenUnspecified = true;
+//     options.ReportApiVersions = true;
+// });
 
-// SEED ROLES
-using (var scope = app.Services.CreateScope())
+try
 {
-    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<AppRole>>();
-    foreach (var roleName in Enum.GetNames(typeof(UserRole)))
+    Log.Information("Starting SouthAmp API host");
+    var app = builder.Build();
+
+    // SEED ROLES
+    using (var scope = app.Services.CreateScope())
     {
-        if (!await roleManager.RoleExistsAsync(roleName))
+        var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<AppRole>>();
+        foreach (var roleName in Enum.GetNames(typeof(UserRole)))
         {
-            await roleManager.CreateAsync(new AppRole { Name = roleName });
+            if (!await roleManager.RoleExistsAsync(roleName))
+            {
+                await roleManager.CreateAsync(new AppRole { Name = roleName });
+            }
         }
     }
-}
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
-app.UseHttpsRedirection();
-app.UseAuthentication();
-app.UseAuthorization();
-app.UseMiddleware<ExceptionMiddleware>();
-app.MapControllers();
-
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
+    // Configure the HTTP request pipeline.
+    if (app.Environment.IsDevelopment())
     {
-        var forecast = Enumerable.Range(1, 5).Select(index =>
-                new WeatherForecast
-                (
-                    DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                    Random.Shared.Next(-20, 55),
-                    summaries[Random.Shared.Next(summaries.Length)]
-                ))
-            .ToArray();
-        return forecast;
-    })
-    .WithName("GetWeatherForecast")
-    .WithOpenApi();
+        app.UseSwagger();
+        app.UseSwaggerUI();
+    }
+    // app.UseIpRateLimiting(); // Wykomentowano, jeśli nie masz pakietu AspNetCoreRateLimit
+    app.UseHttpsRedirection();
+    app.UseAuthentication();
+    app.UseAuthorization();
+    app.UseMiddleware<ExceptionMiddleware>();
+    app.MapControllers();
 
-app.Run();
+    var summaries = new[]
+    {
+        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+    };
+
+    app.MapGet("/weatherforecast", () =>
+        {
+            var forecast = Enumerable.Range(1, 5).Select(index =>
+                    new WeatherForecast
+                    (
+                        DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
+                        Random.Shared.Next(-20, 55),
+                        summaries[Random.Shared.Next(summaries.Length)]
+                    ))
+                .ToArray();
+            return forecast;
+        })
+        .WithName("GetWeatherForecast")
+        .WithOpenApi();
+
+    app.Run();
+}
+catch (Exception ex)
+{
+    Log.Fatal(ex, "Host terminated unexpectedly");
+}
+finally
+{
+    Log.CloseAndFlush();
+}
 
 record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
 {

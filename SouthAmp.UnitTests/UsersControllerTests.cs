@@ -18,6 +18,8 @@ namespace SouthAmp.UnitTests
     {
         private readonly Mock<UserManager<AppUser>> _userManagerMock;
         private readonly Mock<SignInManager<AppUser>> _signInManagerMock;
+        private readonly Mock<IAuditService> _auditMock = new();
+        private readonly Mock<IEmailService> _emailMock = new();
         private UsersController _controller;
 
         public UsersControllerTests()
@@ -27,7 +29,9 @@ namespace SouthAmp.UnitTests
             var contextAccessor = new Mock<Microsoft.AspNetCore.Http.IHttpContextAccessor>();
             var claimsFactory = new Mock<IUserClaimsPrincipalFactory<AppUser>>();
             _signInManagerMock = new Mock<SignInManager<AppUser>>(_userManagerMock.Object, contextAccessor.Object, claimsFactory.Object, null!, null!, null!, null!);
-            _controller = new UsersController(_userManagerMock.Object, _signInManagerMock.Object, new TestJwtTokenService());
+            _auditMock = new Mock<IAuditService>();
+            _emailMock = new Mock<IEmailService>();
+            _controller = new UsersController(_userManagerMock.Object, _signInManagerMock.Object, new TestJwtTokenService(), _auditMock.Object, _emailMock.Object);
         }
 
         [Fact]
@@ -79,7 +83,7 @@ namespace SouthAmp.UnitTests
             _userManagerMock.Setup(u => u.FindByEmailAsync(req.Email)).ReturnsAsync(user);
             _signInManagerMock.Setup(s => s.CheckPasswordSignInAsync(user, req.Password, false)).ReturnsAsync(Microsoft.AspNetCore.Identity.SignInResult.Success);
             _userManagerMock.Setup(u => u.GetRolesAsync(user)).ReturnsAsync(new List<string> { "guest" });
-            _controller = new UsersController(_userManagerMock.Object, _signInManagerMock.Object, new TestJwtTokenService());
+            _controller = new UsersController(_userManagerMock.Object, _signInManagerMock.Object, new TestJwtTokenService(), _auditMock.Object, _emailMock.Object);
             var result = await _controller.Login(req);
             var ok = Assert.IsType<OkObjectResult>(result);
             var value = ok.Value;

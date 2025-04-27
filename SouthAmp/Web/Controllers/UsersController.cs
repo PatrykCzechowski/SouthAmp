@@ -11,7 +11,9 @@ namespace SouthAmp.Web.Controllers
     public class UsersController(
         UserManager<AppUser> userManager,
         SignInManager<AppUser> signInManager,
-        JwtTokenService jwtTokenService)
+        JwtTokenService jwtTokenService,
+        IAuditService auditService,
+        IEmailService emailService)
         : ControllerBase
     {
         [HttpPost("register")]
@@ -22,6 +24,8 @@ namespace SouthAmp.Web.Controllers
             if (!result.Succeeded)
                 return BadRequest(result.Errors);
             await userManager.AddToRoleAsync(user, request.Role ?? "guest");
+            auditService.LogUserAction(user.Id.ToString(), "Register", $"Email: {user.Email}");
+            await emailService.SendAsync(user.Email, "Registration Confirmation", "Thank you for registering at SouthAmp!");
             return Ok();
         }
 

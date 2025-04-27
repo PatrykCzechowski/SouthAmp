@@ -10,6 +10,7 @@ using SouthAmp.Application.DTOs;
 using SouthAmp.Application.Interfaces;
 using SouthAmp.Application.UseCases;
 using SouthAmp.Core.Entities;
+using SouthAmp.Infrastructure.Services;
 using SouthAmp.Web.Controllers;
 using SouthAmp.Web.Models;
 using Xunit;
@@ -20,10 +21,17 @@ namespace SouthAmp.UnitTests
     {
         private readonly Mock<IReservationUseCases> _useCasesMock = new(MockBehavior.Strict);
         private readonly Mock<IMapper> _mapperMock = new();
+        private readonly Mock<IAuditService> _auditMock = new();
+        private readonly Mock<IEmailService> _emailMock = new();
         private readonly ReservationsController _controller;
         public ReservationsControllerTests()
         {
-            _controller = new ReservationsController(_useCasesMock.Object, _mapperMock.Object);
+            _controller = new ReservationsController(
+                _useCasesMock.Object,
+                _mapperMock.Object,
+                _auditMock.Object,
+                _emailMock.Object
+            );
         }
 
         private void SetUser(string userId)
@@ -98,6 +106,7 @@ namespace SouthAmp.UnitTests
         [Fact]
         public async Task CancelReservation_ReturnsOk()
         {
+            SetUser("1");
             _useCasesMock.Setup(u => u.CancelReservationAsync(1)).Returns(Task.CompletedTask);
             var result = await _controller.CancelReservation(1);
             var ok = Assert.IsType<OkObjectResult>(result);
@@ -108,6 +117,7 @@ namespace SouthAmp.UnitTests
         [Fact]
         public async Task ChangeReservationDate_ReturnsOk()
         {
+            SetUser("1");
             var req = new ReservationsController.ChangeDateRequest { NewStart = DateTime.Today, NewEnd = DateTime.Today.AddDays(2) };
             _useCasesMock.Setup(u => u.ChangeReservationDateAsync(1, req.NewStart, req.NewEnd)).Returns(Task.CompletedTask);
             var result = await _controller.ChangeReservationDate(1, req);
