@@ -1,16 +1,16 @@
 using Microsoft.AspNetCore.Mvc;
-using SouthAmp.Application.UseCases;
 using SouthAmp.Application.DTOs;
 using SouthAmp.Core.Entities;
 using Microsoft.AspNetCore.Authorization;
 using AutoMapper;
 using SouthAmp.Web.Models;
+using SouthAmp.Application.Interfaces;
 
 namespace SouthAmp.Web.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class HotelsController(HotelUseCases hotelUseCases, IMapper mapper) : ControllerBase
+    public class HotelsController(IHotelUseCases hotelUseCases, IMapper mapper) : ControllerBase
     {
         [HttpPost]
         [Authorize(Roles = "provider,admin")]

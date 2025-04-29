@@ -1,0 +1,19 @@
+<form [formGroup]="reportForm" (ngSubmit)="onSubmit()">
+  <h2>{{ "REPORTS.ADD_TITLE" | translate }}</h2>
+  <div>
+    <label>{{ "REPORTS.TYPE" | translate }}</label>
+    <select formControlName="type">
+      <option value="problem">{{ "REPORTS.TYPE_PROBLEM" | translate }}</option>
+      <option value="service">{{ "REPORTS.TYPE_SERVICE" | translate }}</option>
+      <option value="other">{{ "REPORTS.TYPE_OTHER" | translate }}</option>
+    </select>
+  </div>
+  <div>
+    <label>{{ "REPORTS.DESCRIPTION" | translate }}</label>
+    <textarea formControlName="description"></textarea>
+  </div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+  <button type="submit" [disabled]="loading">
+    {{ "REPORTS.SEND" | translate }}
+  </button>
+</form>

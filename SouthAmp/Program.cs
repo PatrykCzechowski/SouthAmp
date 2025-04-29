@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using SouthAmp.Infrastructure.Identity;
 using System.Text;
+using AspNetCoreRateLimit;
 using Microsoft.EntityFrameworkCore;
 using SouthAmp.Infrastructure.Data;
 using SouthAmp.Core.Interfaces;
@@ -8,10 +9,10 @@ using FluentValidation;
 using FluentValidation.AspNetCore;
 using SouthAmp.Web.Models;
 using SouthAmp.Web.Middleware;
-using AutoMapper;
 using Serilog;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using SouthAmp.Application.Interfaces;
 using SouthAmp.Application.UseCases;
 using SouthAmp.Infrastructure.Services;
 
@@ -24,14 +25,14 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(connectionString));
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<JwtTokenService>();
-builder.Services.AddScoped<HotelUseCases>();
-builder.Services.AddScoped<RoomUseCases>();
-builder.Services.AddScoped<PaymentUseCases>();
-builder.Services.AddScoped<ReviewUseCases>();
-builder.Services.AddScoped<NotificationUseCases>();
-builder.Services.AddScoped<ReportUseCases>();
-builder.Services.AddScoped<DiscountCodeUseCases>();
-builder.Services.AddScoped<LocationUseCases>();
+builder.Services.AddScoped<IHotelUseCases, HotelUseCases>();
+builder.Services.AddScoped<IRoomUseCases, RoomUseCases>();
+builder.Services.AddScoped<IPaymentUseCases, PaymentUseCases>();
+builder.Services.AddScoped<IReviewUseCases, ReviewUseCases>();
+builder.Services.AddScoped<INotificationUseCases, NotificationUseCases>();
+builder.Services.AddScoped<IReportUseCases, ReportUseCases>();
+builder.Services.AddScoped<IDiscountCodeUseCases, DiscountCodeUseCases>();
+builder.Services.AddScoped<ILocationUseCases, LocationUseCases>();
 builder.Services.AddScoped<IHotelRepository, HotelRepository>();
 builder.Services.AddScoped<IRoomRepository, RoomRepository>();
 builder.Services.AddScoped<IReservationRepository, ReservationRepository>();
@@ -43,6 +44,16 @@ builder.Services.AddScoped<IDiscountCodeRepository, DiscountCodeRepository>();
 builder.Services.AddScoped<ILocationRepository, LocationRepository>();
 builder.Services.AddScoped<IAuditService, AuditService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
+builder.Services.AddScoped<IReservationUseCases, ReservationUseCases>();
+builder.Services.AddScoped<IAdminUseCases, AdminUseCases>();
+
+// Rate limiting (AspNetCoreRateLimit)
+builder.Services.AddMemoryCache();
+builder.Services.Configure<IpRateLimitOptions>(builder.Configuration.GetSection("IpRateLimiting"));
+builder.Services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>();
+builder.Services.AddSingleton<IProcessingStrategy, AsyncKeyLockProcessingStrategy>();
+builder.Services.AddSingleton<IRateLimitCounterStore, MemoryCacheRateLimitCounterStore>();
+builder.Services.AddSingleton<IIpPolicyStore, MemoryCacheIpPolicyStore>();
 
 // Identity
 builder.Services.AddIdentity<AppUser, AppRole>(options =>
@@ -108,7 +119,7 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new() { Title = "SouthAmp API", Version = "v1", Description = "Booking.com clone API. All endpoints require JWT authentication unless marked as [AllowAnonymous]." });
+    c.SwaggerDoc("v1", new() { Title = "SouthAmp API", Version = "v1", Description = "All endpoints require JWT authentication unless marked as [AllowAnonymous]." });
     c.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
     {
         Description = "JWT Authorization header using the Bearer scheme. Example: 'Bearer {token}'",
@@ -140,13 +151,6 @@ builder.Services.AddSwaggerGen(c =>
         c.IncludeXmlComments(xmlPath);
 });
 
-// builder.Services.AddApiVersioning(options => // Wykomentowano, jeśli nie masz pakietu versioningu
-// {
-//     options.DefaultApiVersion = new Microsoft.AspNetCore.Mvc.ApiVersion(1, 0);
-//     options.AssumeDefaultVersionWhenUnspecified = true;
-//     options.ReportApiVersions = true;
-// });
-
 try
 {
     Log.Information("Starting SouthAmp API host");
@@ -165,38 +169,17 @@ try
         }
     }
 
-    // Configure the HTTP request pipeline.
     if (app.Environment.IsDevelopment())
     {
         app.UseSwagger();
         app.UseSwaggerUI();
     }
-    // app.UseIpRateLimiting(); // Wykomentowano, jeśli nie masz pakietu AspNetCoreRateLimit
+    app.UseIpRateLimiting();
     app.UseHttpsRedirection();
     app.UseAuthentication();
     app.UseAuthorization();
     app.UseMiddleware<ExceptionMiddleware>();
     app.MapControllers();
-
-    var summaries = new[]
-    {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
-
-    app.MapGet("/weatherforecast", () =>
-        {
-            var forecast = Enumerable.Range(1, 5).Select(index =>
-                    new WeatherForecast
-                    (
-                        DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                        Random.Shared.Next(-20, 55),
-                        summaries[Random.Shared.Next(summaries.Length)]
-                    ))
-                .ToArray();
-            return forecast;
-        })
-        .WithName("GetWeatherForecast")
-        .WithOpenApi();
 
     app.Run();
 }
@@ -207,9 +190,4 @@ catch (Exception ex)
 finally
 {
     Log.CloseAndFlush();
-}
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
 }

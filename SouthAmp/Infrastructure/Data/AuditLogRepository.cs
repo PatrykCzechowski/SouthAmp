@@ -1,8 +1,6 @@
 using SouthAmp.Core.Entities;
 using SouthAmp.Core.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace SouthAmp.Infrastructure.Data
 {
@@ -13,7 +11,7 @@ namespace SouthAmp.Infrastructure.Data
         {
             _context = context;
         }
-        public async Task<AuditLog> GetByIdAsync(int id)
+        public async Task<AuditLog?> GetByIdAsync(int id)
         {
             return await _context.Set<AuditLog>().FirstOrDefaultAsync(a => a.Id == id);
         }

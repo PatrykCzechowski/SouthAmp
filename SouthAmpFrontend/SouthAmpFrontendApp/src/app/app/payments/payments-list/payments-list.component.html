@@ -1,0 +1,18 @@
+<div *ngIf="loading">{{ "PAYMENTS.LOADING" | translate }}</div>
+<div *ngIf="error" class="error">{{ error }}</div>
+<ul *ngIf="!loading && !error">
+  <li
+    *ngFor="let payment of payments"
+    (click)="goToDetails(payment)"
+    style="cursor: pointer"
+  >
+    <strong>{{ "PAYMENTS.ID" | translate }}:</strong> {{ payment.id }} |
+    <strong>{{ "PAYMENTS.RESERVATION" | translate }}:</strong>
+    {{ payment.reservationId }} |
+    <strong>{{ "PAYMENTS.AMOUNT" | translate }}:</strong>
+    {{ payment.amount }} PLN |
+    <strong>{{ "PAYMENTS.STATUS" | translate }}:</strong> {{ payment.status
+    }}<br />
+    <span>{{ "PAYMENTS.CREATED" | translate }}: {{ payment.createdAt }}</span>
+  </li>
+</ul>

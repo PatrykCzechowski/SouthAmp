@@ -15,6 +15,7 @@ namespace SouthAmp.Application.UseCases
         }
         public async Task<Hotel> AddHotelAsync(Hotel hotel)
         {
+            hotel.CreatedAt = DateTime.UtcNow;
             await _hotelRepository.AddAsync(hotel);
             return hotel;
         }

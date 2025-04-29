@@ -6,7 +6,7 @@ namespace SouthAmp.Core.Interfaces
 {
     public interface IAuditLogRepository
     {
-        Task<AuditLog> GetByIdAsync(int id);
+        Task<AuditLog?> GetByIdAsync(int id);
         Task<IEnumerable<AuditLog>> GetByUserIdAsync(int userId);
         Task AddAsync(AuditLog log);
         // ...inne metody repozytorium...

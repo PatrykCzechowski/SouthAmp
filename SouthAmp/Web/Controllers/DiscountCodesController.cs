@@ -26,8 +26,6 @@ namespace SouthAmp.Web.Controllers
         public async Task<IActionResult> VerifyCode(string code)
         {
             var discount = await useCases.GetByCodeAsync(code);
-            if (discount == null)
-                return NotFound(new ApiResponse<string>("Code not found"));
             return Ok(new ApiResponse<DiscountCodeDto>(mapper.Map<DiscountCodeDto>(discount)));
         }
 

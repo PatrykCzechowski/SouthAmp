@@ -1,0 +1,15 @@
+<form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
+  <h2>{{ "PAYMENTS.ADD_TITLE" | translate }}</h2>
+  <div>
+    <label>{{ "PAYMENTS.RESERVATION" | translate }}</label>
+    <input formControlName="reservationId" type="number" />
+  </div>
+  <div>
+    <label>{{ "PAYMENTS.AMOUNT" | translate }}</label>
+    <input formControlName="amount" type="number" min="1" />
+  </div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+  <button type="submit" [disabled]="loading">
+    {{ "PAYMENTS.PAY" | translate }}
+  </button>
+</form>

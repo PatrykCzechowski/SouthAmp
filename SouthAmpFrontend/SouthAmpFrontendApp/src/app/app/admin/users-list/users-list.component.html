@@ -1,0 +1,26 @@
+<div *ngIf="loading">Ładowanie użytkowników...</div>
+<div *ngIf="error" class="error">{{ error }}</div>
+<table *ngIf="!loading && !error">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Email</th>
+      <th>Rola</th>
+      <th>Status</th>
+      <th>Akcje</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user.id }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.role }}</td>
+      <td>{{ user.active ? "Aktywny" : "Zablokowany" }}</td>
+      <td>
+        <button (click)="banUser(user.id)">Zablokuj</button>
+        <button (click)="activateUser(user.id)">Aktywuj</button>
+        <button (click)="deleteUser(user.id)">Usuń</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

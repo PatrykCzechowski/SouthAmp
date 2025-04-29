@@ -1,0 +1,70 @@
+<div style="margin-bottom: 1em; display: flex; flex-wrap: wrap; gap: 8px">
+  <input
+    [(ngModel)]="cityFilter"
+    [placeholder]="'SEARCH_CITY' | translate"
+    style="flex: 1 1 120px; min-width: 120px"
+  />
+  <input
+    [(ngModel)]="countryFilter"
+    [placeholder]="'SEARCH_COUNTRY' | translate"
+    style="flex: 1 1 120px; min-width: 120px"
+  />
+</div>
+<ul
+  *ngIf="!loading && !error"
+  style="
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  "
+>
+  <li
+    *ngFor="let hotel of filterHotels()"
+    (click)="goToDetails(hotel)"
+    style="
+      cursor: pointer;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px #0001;
+      padding: 12px;
+      min-width: 220px;
+      max-width: 320px;
+      flex: 1 1 220px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    "
+  >
+    <img
+      *ngIf="hotel.imageUrl"
+      [src]="hotel.imageUrl"
+      alt="{{ hotel.name }}"
+      style="
+        width: 100%;
+        max-width: 280px;
+        border-radius: 6px;
+        margin-bottom: 8px;
+        object-fit: cover;
+        aspect-ratio: 16/9;
+      "
+    />
+    <strong style="font-size: 1.1em; margin-bottom: 4px">{{
+      hotel.name
+    }}</strong>
+    <span style="color: #666; font-size: 0.95em"
+      >{{ hotel.city }}, {{ hotel.country }}</span
+    >
+    <span style="margin: 4px 0 8px 0; color: #888; font-size: 0.95em">{{
+      hotel.location
+    }}</span>
+    <span style="font-size: 0.95em; margin-bottom: 8px">{{
+      hotel.description
+    }}</span>
+    <span *ngIf="hotel.rating" style="font-size: 0.95em; color: #1976d2"
+      >{{ "HOTELS.RATING" | translate }}: {{ hotel.rating }}</span
+    >
+  </li>
+</ul>

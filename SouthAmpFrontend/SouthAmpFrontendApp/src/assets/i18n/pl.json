@@ -1,0 +1,62 @@
+{
+  "LOGIN": {
+    "TITLE": "Logowanie",
+    "USERNAME": "Nazwa użytkownika",
+    "PASSWORD": "Hasło",
+    "SUBMIT": "Zaloguj się",
+    "ERROR": "Nieprawidłowy login lub hasło."
+  },
+  "REGISTER": {
+    "TITLE": "Rejestracja",
+    "USERNAME": "Nazwa użytkownika",
+    "EMAIL": "E-mail",
+    "PASSWORD": "Hasło",
+    "SUBMIT": "Zarejestruj się",
+    "ERROR": "Nie udało się zarejestrować. Sprawdź dane."
+  },
+  "RESET": {
+    "TITLE": "Reset hasła",
+    "EMAIL": "E-mail",
+    "SUBMIT": "Wyślij link resetujący",
+    "SUCCESS": "Link do resetu hasła został wysłany na podany adres e-mail.",
+    "ERROR": "Nie udało się wysłać linku resetującego. Sprawdź adres e-mail."
+  },
+  "PROFILE": {
+    "TITLE": "Profil użytkownika",
+    "USERNAME": "Nazwa użytkownika",
+    "EMAIL": "E-mail",
+    "SAVE": "Zapisz zmiany",
+    "SUCCESS": "Profil został zaktualizowany.",
+    "ERROR": "Nie udało się zaktualizować profilu.",
+    "CHANGE_PASSWORD": "Zmiana hasła",
+    "CURRENT_PASSWORD": "Obecne hasło",
+    "NEW_PASSWORD": "Nowe hasło",
+    "CHANGE_PASSWORD_BTN": "Zmień hasło",
+    "PASSWORD_SUCCESS": "Hasło zostało zmienione.",
+    "PASSWORD_ERROR": "Nie udało się zmienić hasła."
+  },
+  "HOTELS": {
+    "ADD_TITLE": "Dodaj hotel",
+    "EDIT_TITLE": "Edytuj hotel",
+    "NAME": "Nazwa hotelu",
+    "LOCATION": "Lokalizacja",
+    "DESCRIPTION": "Opis",
+    "IMAGE_URL": "URL zdjęcia",
+    "ADD": "Dodaj",
+    "SAVE": "Zapisz",
+    "FORM_LOAD_ERROR": "Nie udało się załadować danych hotelu.",
+    "FORM_SAVE_ERROR": "Nie udało się zapisać hotelu.",
+    "LOADING": "Ładowanie hoteli...",
+    "DETAILS_LOADING": "Ładowanie szczegółów hotelu...",
+    "RATING": "Ocena",
+    "CITY": "Miasto",
+    "COUNTRY": "Kraj",
+    "LATITUDE": "Szerokość geograficzna",
+    "LONGITUDE": "Długość geograficzna",
+    "DISCOUNT_CODE": "Kod rabatowy",
+    "DISCOUNT": "Zniżka",
+    "MAP_HINT": "Kliknij na mapie, aby ustawić lokalizację hotelu.",
+    "SEARCH_CITY": "Szukaj po mieście",
+    "SEARCH_COUNTRY": "Szukaj po kraju"
+  }
+}

@@ -1,0 +1,27 @@
+<div *ngIf="loading">{{ "REVIEWS.DETAILS_LOADING" | translate }}</div>
+<div *ngIf="error" class="error">{{ error }}</div>
+<div *ngIf="review && !loading && !error">
+  <h2>{{ "REVIEWS.DETAILS_TITLE" | translate }} #{{ review.id }}</h2>
+  <p>
+    <strong>{{ "REVIEWS.RATING" | translate }}:</strong> {{ review.rating }} / 5
+  </p>
+  <p>
+    <strong>{{ "REVIEWS.COMMENT" | translate }}:</strong> {{ review.comment }}
+  </p>
+  <p>
+    <strong>{{ "REVIEWS.HOTEL" | translate }}:</strong> {{ review.hotelId }}
+  </p>
+  <p>
+    <strong>{{ "REVIEWS.RESERVATION" | translate }}:</strong>
+    {{ review.reservationId }}
+  </p>
+  <p>
+    <strong>{{ "REVIEWS.CREATED" | translate }}:</strong>
+    {{ review.createdAt | date : "yyyy-MM-dd" }}
+  </p>
+  <button (click)="editReview()">{{ "REVIEWS.EDIT" | translate }}</button>
+  <button (click)="deleteReview()">{{ "REVIEWS.DELETE" | translate }}</button>
+  <div *ngIf="deleteSuccess" class="success">
+    {{ "REVIEWS.DELETE_SUCCESS" | translate }}
+  </div>
+</div>

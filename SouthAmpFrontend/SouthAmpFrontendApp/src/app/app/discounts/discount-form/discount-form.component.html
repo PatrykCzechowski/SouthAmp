@@ -1,0 +1,39 @@
+<form [formGroup]="discountForm" (ngSubmit)="onSubmit()">
+  <h2>
+    {{
+      isEdit
+        ? ("DISCOUNTS.EDIT_TITLE" | translate)
+        : ("DISCOUNTS.ADD_TITLE" | translate)
+    }}
+  </h2>
+  <div>
+    <label>{{ "DISCOUNTS.CODE" | translate }}</label>
+    <input formControlName="code" />
+  </div>
+  <div>
+    <label>{{ "DISCOUNTS.PERCENT" | translate }}</label>
+    <input type="number" formControlName="percent" min="1" max="100" />
+  </div>
+  <div>
+    <label>{{ "DISCOUNTS.VALID_FROM" | translate }}</label>
+    <input type="date" formControlName="validFrom" />
+  </div>
+  <div>
+    <label>{{ "DISCOUNTS.VALID_TO" | translate }}</label>
+    <input type="date" formControlName="validTo" />
+  </div>
+  <div>
+    <label>{{ "DISCOUNTS.USAGE_LIMIT" | translate }}</label>
+    <input type="number" formControlName="usageLimit" min="1" />
+  </div>
+  <div>
+    <label>{{ "DISCOUNTS.ACTIVE" | translate }}</label>
+    <input type="checkbox" formControlName="active" />
+  </div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+  <button type="submit" [disabled]="loading">
+    {{
+      isEdit ? ("DISCOUNTS.SAVE" | translate) : ("DISCOUNTS.ADD" | translate)
+    }}
+  </button>
+</form>

@@ -1,0 +1,19 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <h2>{{ "REGISTER.TITLE" | translate }}</h2>
+  <div>
+    <label>{{ "REGISTER.USERNAME" | translate }}</label>
+    <input formControlName="username" type="text" />
+  </div>
+  <div>
+    <label>{{ "REGISTER.EMAIL" | translate }}</label>
+    <input formControlName="email" type="email" />
+  </div>
+  <div>
+    <label>{{ "REGISTER.PASSWORD" | translate }}</label>
+    <input formControlName="password" type="password" />
+  </div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+  <button type="submit" [disabled]="loading">
+    {{ "REGISTER.SUBMIT" | translate }}
+  </button>
+</form>

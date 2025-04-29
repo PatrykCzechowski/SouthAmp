@@ -1,0 +1,47 @@
+<form [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
+  <h2>
+    {{
+      isEdit
+        ? ("RESERVATIONS.EDIT_TITLE" | translate)
+        : ("RESERVATIONS.ADD_TITLE" | translate)
+    }}
+  </h2>
+  <div>
+    <label>{{ "RESERVATIONS.ROOM" | translate }}</label>
+    <input formControlName="roomId" type="number" />
+  </div>
+  <div>
+    <label>{{ "RESERVATIONS.HOTEL" | translate }}</label>
+    <input formControlName="hotelId" type="number" />
+  </div>
+  <div>
+    <label>{{ "RESERVATIONS.DATE_START" | translate }}</label>
+    <input formControlName="startDate" type="date" />
+  </div>
+  <div>
+    <label>{{ "RESERVATIONS.DATE_END" | translate }}</label>
+    <input formControlName="endDate" type="date" />
+  </div>
+  <div>
+    <label>{{ "RESERVATIONS.TOTAL" | translate }}</label>
+    <input formControlName="totalPrice" type="number" min="0" />
+  </div>
+  <div>
+    <label>Kod rabatowy</label>
+    <input formControlName="discountCode" (blur)="validateDiscount()" />
+    <span *ngIf="reservationForm.value.discountInfo">
+      Zniżka: {{ reservationForm.value.discountInfo.percent }}%
+    </span>
+    <span *ngIf="error && reservationForm.get('discountCode')?.value">{{
+      error
+    }}</span>
+  </div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+  <button type="submit" [disabled]="loading">
+    {{
+      isEdit
+        ? ("RESERVATIONS.SAVE" | translate)
+        : ("RESERVATIONS.ADD" | translate)
+    }}
+  </button>
+</form>

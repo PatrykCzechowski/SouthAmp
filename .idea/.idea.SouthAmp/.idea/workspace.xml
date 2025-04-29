@@ -10,22 +10,182 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fd4445da-758e-450e-8aeb-6dcadbc1fe18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/SouthAmp/Infrastructure/Services/AuditService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SouthAmp/Infrastructure/Services/EmailService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SouthAmp/Web/Models/HotelDtoValidator.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SouthAmp/Web/Models/PaymentDtoValidator.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SouthAmp/Web/Models/ReservationDtoValidator.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SouthAmp/Web/Models/ReviewDtoValidator.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SouthAmp/Web/Models/RoomDtoValidator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Copilot/requirements-frontend.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmp/Web/Models/ChangeDateRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmp/Web/Models/CheckAvailabilityRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/.github/copilot-instructions.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/.vscode/extensions.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/.vscode/launch.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/.vscode/tasks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/angular.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app.config.server.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app.config.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app.routes.server.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app.routes.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/admin/admin-panel/admin-panel.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/admin/admin-panel/admin-panel.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/admin/admin-panel/admin-panel.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/admin/admin.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/admin/hotels-moderation/hotels-moderation.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/admin/hotels-moderation/hotels-moderation.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/admin/hotels-moderation/hotels-moderation.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/admin/reviews-moderation/reviews-moderation.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/admin/reviews-moderation/reviews-moderation.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/admin/reviews-moderation/reviews-moderation.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/admin/transactions-list/transactions-list.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/admin/transactions-list/transactions-list.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/admin/transactions-list/transactions-list.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/admin/users-list/users-list.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/admin/users-list/users-list.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/admin/users-list/users-list.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/auth/auth.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/auth/login/login.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/auth/login/login.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/auth/login/login.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/auth/register/register.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/auth/register/register.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/auth/register/register.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/auth/reset-password/reset-password.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/auth/reset-password/reset-password.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/auth/reset-password/reset-password.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/discounts/discount-details/discount-details.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/discounts/discount-details/discount-details.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/discounts/discount-details/discount-details.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/discounts/discount-form/discount-form.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/discounts/discount-form/discount-form.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/discounts/discount-form/discount-form.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/discounts/discount.service.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/discounts/discount.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/discounts/discounts-list/discounts-list.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/discounts/discounts-list/discounts-list.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/discounts/discounts-list/discounts-list.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/discounts/discounts.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/hotels/hotel-details/hotel-details.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/hotels/hotel-details/hotel-details.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/hotels/hotel-details/hotel-details.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/hotels/hotel-form/hotel-form.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/hotels/hotel-form/hotel-form.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/hotels/hotel-form/hotel-form.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/hotels/hotels-list/hotels-list.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/hotels/hotels-list/hotels-list.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/hotels/hotels-list/hotels-list.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/hotels/hotels.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/notifications/email-notification.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/notifications/notification.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/notifications/notifications.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/notifications/snackbar/snackbar.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/notifications/snackbar/snackbar.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/notifications/snackbar/snackbar.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/payments/payment-details/payment-details.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/payments/payment-details/payment-details.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/payments/payment-details/payment-details.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/payments/payment-form/payment-form.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/payments/payment-form/payment-form.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/payments/payment-form/payment-form.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/payments/payments-list/payments-list.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/payments/payments-list/payments-list.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/payments/payments-list/payments-list.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/payments/payments.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/reports/report-details/report-details.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/reports/report-details/report-details.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/reports/report-details/report-details.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/reports/report-form/report-form.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/reports/report-form/report-form.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/reports/report-form/report-form.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/reports/report.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/reports/reports-list/reports-list.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/reports/reports-list/reports-list.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/reports/reports-list/reports-list.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/reports/reports.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/reservations/reservation-details/reservation-details.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/reservations/reservation-details/reservation-details.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/reservations/reservation-details/reservation-details.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/reservations/reservation-form/reservation-form.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/reservations/reservation-form/reservation-form.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/reservations/reservation-form/reservation-form.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/reservations/reservations-list/reservations-list.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/reservations/reservations-list/reservations-list.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/reservations/reservations-list/reservations-list.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/reservations/reservations.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/reviews/review-details/review-details.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/reviews/review-details/review-details.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/reviews/review-details/review-details.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/reviews/review-form/review-form.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/reviews/review-form/review-form.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/reviews/review-form/review-form.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/reviews/reviews-list/reviews-list.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/reviews/reviews-list/reviews-list.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/reviews/reviews-list/reviews-list.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/reviews/reviews.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/rooms/room-details/room-details.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/rooms/room-details/room-details.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/rooms/room-details/room-details.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/rooms/room-form/room-form.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/rooms/room-form/room-form.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/rooms/room-form/room-form.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/rooms/rooms-list/rooms-list.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/rooms/rooms-list/rooms-list.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/rooms/rooms-list/rooms-list.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/rooms/rooms.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/shared/services/admin.guard.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/shared/services/audit.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/shared/services/auth.guard.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/shared/services/auth.interceptor.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/shared/services/auth.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/shared/services/hotel.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/shared/services/payment.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/shared/services/reservation.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/shared/services/review.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/shared/services/room.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/shared/services/user.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/shared/shared.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/user/profile/profile.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/user/profile/profile.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/user/profile/profile.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/app/app/user/user.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/assets/i18n/en.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/assets/i18n/pl.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/main.server.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/main.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/server.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/src/styles.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/tsconfig.app.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/tsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/SouthAmpFrontendApp/tsconfig.spec.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SouthAmpFrontend/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SouthAmp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SouthAmp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SouthAmp.UnitTests/ReservationsControllerTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp.UnitTests/ReservationsControllerTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SouthAmp.UnitTests/UsersControllerTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp.UnitTests/UsersControllerTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SouthAmp/Infrastructure/Services/JwtTokenService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/Infrastructure/Services/JwtTokenService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SouthAmp.UnitTests/AdminControllerTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp.UnitTests/AdminControllerTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SouthAmp.UnitTests/AdminUseCasesTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp.UnitTests/AdminUseCasesTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SouthAmp/Application/Interfaces/IAdminUseCases.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/Application/Interfaces/IAdminUseCases.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SouthAmp/Application/UseCases/AdminUseCases.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/Application/UseCases/AdminUseCases.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SouthAmp/Application/UseCases/HotelUseCases.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/Application/UseCases/HotelUseCases.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SouthAmp/Core/Interfaces/IAuditLogRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/Core/Interfaces/IAuditLogRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SouthAmp/Core/Interfaces/IUserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/Core/Interfaces/IUserRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SouthAmp/Infrastructure/Data/AppDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/Infrastructure/Data/AppDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SouthAmp/Infrastructure/Data/AuditLogRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/Infrastructure/Data/AuditLogRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SouthAmp/Infrastructure/Data/UserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/Infrastructure/Data/UserRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SouthAmp/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SouthAmp/SouthAmp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/SouthAmp.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SouthAmp/Web/Controllers/DiscountCodesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/Web/Controllers/DiscountCodesController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SouthAmp/Web/Controllers/HotelsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/Web/Controllers/HotelsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SouthAmp/Web/Controllers/LocationsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/Web/Controllers/LocationsController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SouthAmp/Web/Controllers/ReservationsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/Web/Controllers/ReservationsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SouthAmp/Web/Controllers/ReviewsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/Web/Controllers/ReviewsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SouthAmp/Web/Controllers/RoomsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/Web/Controllers/RoomsController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SouthAmp/Web/Controllers/UsersController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/Web/Controllers/UsersController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SouthAmp/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SouthAmp/Web/Models/MappingProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/Web/Models/MappingProfile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SouthAmp/Web/Models/RegisterRequestValidator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SouthAmp/Web/Models/RegisterRequestValidator.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,18 +201,19 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/26c8a42d9eb73c40854edcc72b47c4b67120df4a818b5dc9d7a605eb7a28eda/DefaultEngineInvoker.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/829d6ac6e62b9bee9ef8e79e827d87d0c31a7c2eefbc354135d9a8f2c4deb/Mapper.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/SouthAmp.UnitTests/AdminControllerIntegrationTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/SouthAmp.UnitTests/AdminControllerTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/SouthAmp.UnitTests/AdminUseCasesTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/SouthAmp.UnitTests/LocationsControllerTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/SouthAmp.UnitTests/RoomsControllerTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/patcz/RiderProjects/SouthAmp/SouthAmp/Infrastructure/Data/AppDbContext.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
 }</component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="SWEA" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -192,16 +353,89 @@
       <updated>1745675547277</updated>
       <workItem from="1745675549099" duration="23447000" />
       <workItem from="1745743413144" duration="5073000" />
-      <workItem from="1745758747615" duration="5858000" />
+      <workItem from="1745758747615" duration="14938000" />
+      <workItem from="1745853097296" duration="6896000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/SouthAmp/Infrastructure/Data/NotificationRepository.cs</url>
+          <line>21</line>
+          <properties documentPath="C:\Users\patcz\RiderProjects\SouthAmp\SouthAmp\Infrastructure\Data\NotificationRepository.cs" containingFunctionPresentation="Method 'GetByUserIdAsync'">
+            <startOffsets>
+              <option value="735" />
+            </startOffsets>
+            <endOffsets>
+              <option value="822" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/SouthAmp/Infrastructure/Data/NotificationRepository.cs</url>
+          <line>17</line>
+          <properties documentPath="C:\Users\patcz\RiderProjects\SouthAmp\SouthAmp\Infrastructure\Data\NotificationRepository.cs" containingFunctionPresentation="Method 'GetByIdAsync'">
+            <startOffsets>
+              <option value="520" />
+            </startOffsets>
+            <endOffsets>
+              <option value="620" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/SouthAmp/Web/Controllers/NotificationsController.cs</url>
+          <line>27</line>
+          <properties documentPath="C:\Users\patcz\RiderProjects\SouthAmp\SouthAmp\Web\Controllers\NotificationsController.cs" containingFunctionPresentation="Method 'GetMyNotifications'">
+            <startOffsets>
+              <option value="805" />
+            </startOffsets>
+            <endOffsets>
+              <option value="868" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/SouthAmp/Infrastructure/Data/UserRepository.cs</url>
+          <line>31</line>
+          <properties documentPath="C:\Users\patcz\RiderProjects\SouthAmp\SouthAmp\Infrastructure\Data\UserRepository.cs" containingFunctionPresentation="Method 'GetAllAsync'">
+            <startOffsets>
+              <option value="1055" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1097" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/SouthAmp/Infrastructure/Data/HotelRepository.cs</url>
+          <line>25</line>
+          <properties documentPath="C:\Users\patcz\RiderProjects\SouthAmp\SouthAmp\Infrastructure\Data\HotelRepository.cs" containingFunctionPresentation="Method 'AddAsync'">
+            <startOffsets>
+              <option value="879" />
+            </startOffsets>
+            <endOffsets>
+              <option value="923" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

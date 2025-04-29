@@ -7,6 +7,7 @@ using SouthAmp.Application.DTOs;
 using SouthAmp.Application.Interfaces;
 using SouthAmp.Application.UseCases;
 using SouthAmp.Core.Entities;
+using SouthAmp.Infrastructure.Identity;
 using SouthAmp.Web.Controllers;
 using SouthAmp.Web.Models;
 using Xunit;
@@ -20,14 +21,14 @@ namespace SouthAmp.UnitTests
         private readonly AdminController _controller;
         public AdminControllerTests()
         {
-            _controller = new AdminController(_useCasesMock.Object, _mapperMock.Object);
+            _controller = new(_useCasesMock.Object, _mapperMock.Object);
         }
 
         [Fact]
         public async Task GetAllUsers_ReturnsOk()
         {
-            var users = new List<AppUserProfile> { new AppUserProfile() };
-            var dtos = new List<UserDto> { new UserDto() };
+            var users = new List<AppUser> { new() };
+            var dtos = new List<UserDto> { new() };
             _useCasesMock.Setup(u => u.GetAllUsersAsync()).ReturnsAsync(users);
             _mapperMock.Setup(m => m.Map<IEnumerable<UserDto>>(users)).Returns(dtos);
             var result = await _controller.GetAllUsers();
@@ -69,8 +70,8 @@ namespace SouthAmp.UnitTests
         [Fact]
         public async Task GetAllHotels_ReturnsOk()
         {
-            var hotels = new List<Hotel> { new Hotel() };
-            var dtos = new List<HotelDto> { new HotelDto() };
+            var hotels = new List<Hotel> { new() };
+            var dtos = new List<HotelDto> { new() };
             _useCasesMock.Setup(u => u.GetAllHotelsAsync()).ReturnsAsync(hotels);
             _mapperMock.Setup(m => m.Map<IEnumerable<HotelDto>>(hotels)).Returns(dtos);
             var result = await _controller.GetAllHotels();
@@ -92,8 +93,8 @@ namespace SouthAmp.UnitTests
         [Fact]
         public async Task GetAllReviews_ReturnsOk()
         {
-            var reviews = new List<Review> { new Review() };
-            var dtos = new List<ReviewDto> { new ReviewDto() };
+            var reviews = new List<Review> { new() };
+            var dtos = new List<ReviewDto> { new() };
             _useCasesMock.Setup(u => u.GetAllReviewsAsync()).ReturnsAsync(reviews);
             _mapperMock.Setup(m => m.Map<IEnumerable<ReviewDto>>(reviews)).Returns(dtos);
             var result = await _controller.GetAllReviews();
@@ -115,8 +116,8 @@ namespace SouthAmp.UnitTests
         [Fact]
         public async Task GetAllPayments_ReturnsOk()
         {
-            var payments = new List<Payment> { new Payment() };
-            var dtos = new List<PaymentDto> { new PaymentDto() };
+            var payments = new List<Payment> { new() };
+            var dtos = new List<PaymentDto> { new() };
             _useCasesMock.Setup(u => u.GetAllPaymentsAsync()).ReturnsAsync(payments);
             _mapperMock.Setup(m => m.Map<IEnumerable<PaymentDto>>(payments)).Returns(dtos);
             var result = await _controller.GetAllPayments();

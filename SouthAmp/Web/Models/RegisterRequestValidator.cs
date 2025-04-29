@@ -11,7 +11,7 @@ namespace SouthAmp.Web.Models
             RuleFor(x => x.UserName).NotEmpty().MinimumLength(3);
             RuleFor(x => x.Email).NotEmpty().EmailAddress();
             RuleFor(x => x.Password).NotEmpty().MinimumLength(6);
-            RuleFor(x => x.Role).Must(r => r == null || r == "guest" || r == "provider" || r == "admin");
+            RuleFor(x => x.Role).Must(r => r is null or "guest" or "provider" or "admin");
         }
     }
 }

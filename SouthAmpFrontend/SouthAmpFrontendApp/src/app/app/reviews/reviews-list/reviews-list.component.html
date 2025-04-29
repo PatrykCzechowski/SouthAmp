@@ -1,0 +1,20 @@
+<div *ngIf="loading">{{ "REVIEWS.LOADING" | translate }}</div>
+<div *ngIf="error" class="error">{{ error }}</div>
+<div *ngIf="averageRating !== null && !loading && !error">
+  <strong>{{ "REVIEWS.AVERAGE" | translate }}:</strong>
+  {{ averageRating | number : "1.1-2" }} / 5
+</div>
+<ul *ngIf="!loading && !error">
+  <li
+    *ngFor="let review of reviews"
+    (click)="goToDetails(review)"
+    style="cursor: pointer"
+  >
+    <strong>{{ "REVIEWS.RATING" | translate }}:</strong> {{ review.rating }} /
+    5<br />
+    <span>{{ review.comment }}</span>
+    <div style="font-size: 0.9em; color: gray">
+      {{ review.createdAt | date : "yyyy-MM-dd" }}
+    </div>
+  </li>
+</ul>

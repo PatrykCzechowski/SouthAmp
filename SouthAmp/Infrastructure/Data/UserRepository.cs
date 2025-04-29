@@ -3,6 +3,7 @@ using SouthAmp.Core.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using SouthAmp.Infrastructure.Identity;
 
 namespace SouthAmp.Infrastructure.Data
 {
@@ -13,11 +14,11 @@ namespace SouthAmp.Infrastructure.Data
         {
             _context = context;
         }
-        public async Task<AppUserProfile> GetByIdAsync(int id)
+        public async Task<AppUserProfile?> GetByIdAsync(int id)
         {
             return await _context.AppUserProfiles.FindAsync(id);
         }
-        public async Task<AppUserProfile> GetByEmailAsync(string email)
+        public async Task<AppUserProfile?> GetByEmailAsync(string email)
         {
             return await _context.AppUserProfiles.FirstOrDefaultAsync(u => u.Email == email);
         }
@@ -26,9 +27,9 @@ namespace SouthAmp.Infrastructure.Data
             await _context.AppUserProfiles.AddAsync(user);
             await _context.SaveChangesAsync();
         }
-        public async Task<IEnumerable<AppUserProfile>> GetAllAsync()
+        public async Task<IEnumerable<AppUser>> GetAllAsync()
         {
-            return await _context.AppUserProfiles.ToListAsync();
+            return await _context.Users.ToListAsync();
         }
         public async Task UpdateAsync(AppUserProfile user)
         {

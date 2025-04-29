@@ -1,0 +1,15 @@
+<div *ngIf="loading">Ładowanie szczegółów kodu rabatowego...</div>
+<div *ngIf="error" class="error">{{ error }}</div>
+<div *ngIf="discount && !loading && !error">
+  <h2>Szczegóły kodu rabatowego: {{ discount.code }}</h2>
+  <p><strong>Procent:</strong> {{ discount.percent }}%</p>
+  <p>
+    <strong>Ważny od:</strong> {{ discount.validFrom | date : "yyyy-MM-dd" }}
+  </p>
+  <p><strong>Ważny do:</strong> {{ discount.validTo | date : "yyyy-MM-dd" }}</p>
+  <p><strong>Limit użyć:</strong> {{ discount.usageLimit }}</p>
+  <p><strong>Użyto:</strong> {{ discount.usedCount }}</p>
+  <p>
+    <strong>Status:</strong> {{ discount.active ? "Aktywny" : "Nieaktywny" }}
+  </p>
+</div>

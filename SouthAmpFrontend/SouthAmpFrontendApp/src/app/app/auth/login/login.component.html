@@ -1,0 +1,15 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <h2>{{ "LOGIN.TITLE" | translate }}</h2>
+  <div>
+    <label>{{ "LOGIN.USERNAME" | translate }}</label>
+    <input formControlName="username" type="text" />
+  </div>
+  <div>
+    <label>{{ "LOGIN.PASSWORD" | translate }}</label>
+    <input formControlName="password" type="password" />
+  </div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+  <button type="submit" [disabled]="loading">
+    {{ "LOGIN.SUBMIT" | translate }}
+  </button>
+</form>

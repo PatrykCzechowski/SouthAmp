@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using SouthAmp.Application.Interfaces;
 using SouthAmp.Core.Entities;
 using SouthAmp.Core.Interfaces;
+using SouthAmp.Infrastructure.Identity;
 
 namespace SouthAmp.Application.UseCases
 {
@@ -19,7 +20,7 @@ namespace SouthAmp.Application.UseCases
             _reviewRepository = reviewRepository;
             _paymentRepository = paymentRepository;
         }
-        public async Task<IEnumerable<AppUserProfile>> GetAllUsersAsync() => await _userRepository.GetAllAsync();
+        public async Task<IEnumerable<AppUser>> GetAllUsersAsync() => await _userRepository.GetAllAsync();
         public async Task BanUserAsync(int userId) { var user = await _userRepository.GetByIdAsync(userId); if (user != null) { user.IsActive = false; await _userRepository.UpdateAsync(user); } }
         public async Task ActivateUserAsync(int userId) { var user = await _userRepository.GetByIdAsync(userId); if (user != null) { user.IsActive = true; await _userRepository.UpdateAsync(user); } }
         public async Task DeleteUserAsync(int userId) => await _userRepository.DeleteAsync(userId);

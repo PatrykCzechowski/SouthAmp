@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using SouthAmp.Infrastructure.Identity;
 using SouthAmp.Infrastructure.Services;
 using SouthAmp.Application.DTOs;
+using SouthAmp.Core.Entities;
+using SouthAmp.Infrastructure.Data;
 
 namespace SouthAmp.Web.Controllers
 {
@@ -24,6 +26,20 @@ namespace SouthAmp.Web.Controllers
             if (!result.Succeeded)
                 return BadRequest(result.Errors);
             await userManager.AddToRoleAsync(user, request.Role ?? "guest");
+            var profile = new AppUserProfile
+            {
+                Id = user.Id,
+                UserName = user.UserName,
+                Email = user.Email,
+                PasswordHash = user.PasswordHash!,
+                IsActive = true
+            };
+            using (var scope = HttpContext.RequestServices.CreateScope())
+            {
+                var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+                db.AppUserProfiles.Add(profile);
+                await db.SaveChangesAsync();
+            }
             auditService.LogUserAction(user.Id.ToString(), "Register", $"Email: {user.Email}");
             await emailService.SendAsync(user.Email, "Registration Confirmation", "Thank you for registering at SouthAmp!");
             return Ok();

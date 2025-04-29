@@ -1,0 +1,26 @@
+<div *ngIf="loading">Ładowanie hoteli...</div>
+<div *ngIf="error" class="error">{{ error }}</div>
+<table *ngIf="!loading && !error">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nazwa</th>
+      <th>Lokalizacja</th>
+      <th>Status</th>
+      <th>Akcje</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let hotel of hotels">
+      <td>{{ hotel.id }}</td>
+      <td>{{ hotel.name }}</td>
+      <td>{{ hotel.location }}</td>
+      <td>{{ hotel.approved ? "Zatwierdzony" : "Oczekuje" }}</td>
+      <td>
+        <button (click)="approveHotel(hotel.id)">Zatwierdź</button>
+        <button (click)="rejectHotel(hotel.id)">Odrzuć</button>
+        <button (click)="deleteHotel(hotel.id)">Usuń</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

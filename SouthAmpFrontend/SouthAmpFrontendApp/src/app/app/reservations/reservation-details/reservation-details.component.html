@@ -1,0 +1,33 @@
+<div *ngIf="loading">{{ "RESERVATIONS.DETAILS_LOADING" | translate }}</div>
+<div *ngIf="error" class="error">{{ error }}</div>
+<div *ngIf="reservation && !loading && !error">
+  <h2>{{ "RESERVATIONS.DETAILS_TITLE" | translate }} #{{ reservation.id }}</h2>
+  <p>
+    <strong>{{ "RESERVATIONS.ROOM" | translate }}:</strong>
+    {{ reservation.roomId }}
+  </p>
+  <p>
+    <strong>{{ "RESERVATIONS.HOTEL" | translate }}:</strong>
+    {{ reservation.hotelId }}
+  </p>
+  <p>
+    <strong>{{ "RESERVATIONS.DATE" | translate }}:</strong>
+    {{ reservation.startDate }} - {{ reservation.endDate }}
+  </p>
+  <p>
+    <strong>{{ "RESERVATIONS.STATUS" | translate }}:</strong>
+    {{ reservation.status }}
+  </p>
+  <p>
+    <strong>{{ "RESERVATIONS.TOTAL" | translate }}:</strong>
+    {{ reservation.totalPrice }} PLN
+  </p>
+  <div *ngIf="reservation.status === 'active'">
+    <button (click)="cancelReservation()">
+      {{ "RESERVATIONS.CANCEL" | translate }}
+    </button>
+  </div>
+  <div *ngIf="cancelSuccess" class="success">
+    {{ "RESERVATIONS.CANCEL_SUCCESS" | translate }}
+  </div>
+</div>

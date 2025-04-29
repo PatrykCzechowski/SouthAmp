@@ -1,0 +1,62 @@
+{
+  "LOGIN": {
+    "TITLE": "Login",
+    "USERNAME": "Username",
+    "PASSWORD": "Password",
+    "SUBMIT": "Sign in",
+    "ERROR": "Invalid username or password."
+  },
+  "REGISTER": {
+    "TITLE": "Register",
+    "USERNAME": "Username",
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "SUBMIT": "Sign up",
+    "ERROR": "Registration failed. Check your data."
+  },
+  "RESET": {
+    "TITLE": "Reset password",
+    "EMAIL": "Email",
+    "SUBMIT": "Send reset link",
+    "SUCCESS": "A password reset link has been sent to your email address.",
+    "ERROR": "Failed to send reset link. Check your email address."
+  },
+  "PROFILE": {
+    "TITLE": "User Profile",
+    "USERNAME": "Username",
+    "EMAIL": "Email",
+    "SAVE": "Save changes",
+    "SUCCESS": "Profile updated successfully.",
+    "ERROR": "Failed to update profile.",
+    "CHANGE_PASSWORD": "Change password",
+    "CURRENT_PASSWORD": "Current password",
+    "NEW_PASSWORD": "New password",
+    "CHANGE_PASSWORD_BTN": "Change password",
+    "PASSWORD_SUCCESS": "Password changed successfully.",
+    "PASSWORD_ERROR": "Failed to change password."
+  },
+  "HOTELS": {
+    "ADD_TITLE": "Add hotel",
+    "EDIT_TITLE": "Edit hotel",
+    "NAME": "Hotel name",
+    "LOCATION": "Location",
+    "DESCRIPTION": "Description",
+    "IMAGE_URL": "Image URL",
+    "ADD": "Add",
+    "SAVE": "Save",
+    "FORM_LOAD_ERROR": "Failed to load hotel data.",
+    "FORM_SAVE_ERROR": "Failed to save hotel.",
+    "LOADING": "Loading hotels...",
+    "DETAILS_LOADING": "Loading hotel details...",
+    "RATING": "Rating",
+    "CITY": "City",
+    "COUNTRY": "Country",
+    "LATITUDE": "Latitude",
+    "LONGITUDE": "Longitude",
+    "DISCOUNT_CODE": "Discount code",
+    "DISCOUNT": "Discount",
+    "MAP_HINT": "Click on the map to set the hotel location.",
+    "SEARCH_CITY": "Search by city",
+    "SEARCH_COUNTRY": "Search by country"
+  }
+}

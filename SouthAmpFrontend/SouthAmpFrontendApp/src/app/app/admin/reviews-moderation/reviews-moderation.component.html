@@ -1,0 +1,28 @@
+<div *ngIf="loading">Ładowanie opinii...</div>
+<div *ngIf="error" class="error">{{ error }}</div>
+<table *ngIf="!loading && !error">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Hotel</th>
+      <th>Użytkownik</th>
+      <th>Ocena</th>
+      <th>Komentarz</th>
+      <th>Akcje</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let review of reviews">
+      <td>{{ review.id }}</td>
+      <td>{{ review.hotelId }}</td>
+      <td>{{ review.userId }}</td>
+      <td>{{ review.rating }}</td>
+      <td>{{ review.comment }}</td>
+      <td>
+        <button (click)="approveReview(review.id)">Zatwierdź</button>
+        <button (click)="rejectReview(review.id)">Odrzuć</button>
+        <button (click)="deleteReview(review.id)">Usuń</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

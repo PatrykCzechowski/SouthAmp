@@ -52,8 +52,6 @@ namespace SouthAmp.Web.Controllers
         public async Task<IActionResult> GetRoomById(int id)
         {
             var room = await useCases.GetRoomByIdAsync(id);
-            if (room == null)
-                return NotFound(new ApiResponse<string>("Room not found"));
             return Ok(new ApiResponse<RoomDto>(mapper.Map<RoomDto>(room)));
         }
     }

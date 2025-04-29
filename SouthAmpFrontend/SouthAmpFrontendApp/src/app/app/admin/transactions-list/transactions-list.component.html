@@ -1,0 +1,28 @@
+<div *ngIf="loading">Ładowanie transakcji...</div>
+<div *ngIf="error" class="error">{{ error }}</div>
+<table *ngIf="!loading && !error">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Użytkownik</th>
+      <th>Rezerwacja</th>
+      <th>Kwota</th>
+      <th>Status</th>
+      <th>Data</th>
+      <th>Akcje</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let payment of payments">
+      <td>{{ payment.id }}</td>
+      <td>{{ payment.userId }}</td>
+      <td>{{ payment.reservationId }}</td>
+      <td>{{ payment.amount }} PLN</td>
+      <td>{{ payment.status }}</td>
+      <td>{{ payment.createdAt | date : "yyyy-MM-dd" }}</td>
+      <td>
+        <button (click)="refundPayment(payment.id)">Zwróć</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

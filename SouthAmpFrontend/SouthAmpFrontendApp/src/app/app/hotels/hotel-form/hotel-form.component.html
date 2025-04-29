@@ -1,0 +1,52 @@
+<form [formGroup]="hotelForm" (ngSubmit)="onSubmit()">
+  <h2>
+    {{
+      isEdit
+        ? ("HOTELS.EDIT_TITLE" | translate)
+        : ("HOTELS.ADD_TITLE" | translate)
+    }}
+  </h2>
+  <div>
+    <label>{{ "HOTELS.NAME" | translate }}</label>
+    <input formControlName="name" type="text" />
+  </div>
+  <div>
+    <label>{{ "HOTELS.LOCATION" | translate }}</label>
+    <input formControlName="location" type="text" />
+  </div>
+  <div>
+    <label>{{ "HOTELS.DESCRIPTION" | translate }}</label>
+    <textarea formControlName="description"></textarea>
+  </div>
+  <div>
+    <label>{{ "HOTELS.IMAGE_URL" | translate }}</label>
+    <input formControlName="imageUrl" type="text" />
+  </div>
+  <div>
+    <label>{{ "CITY" | translate }}</label>
+    <input formControlName="city" type="text" />
+  </div>
+  <div>
+    <label>{{ "COUNTRY" | translate }}</label>
+    <input formControlName="country" type="text" />
+  </div>
+  <div>
+    <label>{{ "LATITUDE" | translate }}</label>
+    <input formControlName="lat" type="number" step="any" />
+  </div>
+  <div>
+    <label>{{ "LONGITUDE" | translate }}</label>
+    <input formControlName="lng" type="number" step="any" />
+  </div>
+  <div style="height: 300px; margin-bottom: 1em">
+    <div
+      id="hotelMap"
+      style="height: 100%; width: 100%; border: 1px solid #ccc"
+    ></div>
+    <small>{{ "MAP_HINT" | translate }}</small>
+  </div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+  <button type="submit" [disabled]="loading">
+    {{ isEdit ? ("HOTELS.SAVE" | translate) : ("HOTELS.ADD" | translate) }}
+  </button>
+</form>

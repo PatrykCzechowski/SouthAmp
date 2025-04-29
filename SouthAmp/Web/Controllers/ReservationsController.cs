@@ -68,17 +68,5 @@ namespace SouthAmp.Web.Controllers
             await emailService.SendAsync(User.Identity.Name, "Reservation Date Changed", $"Your reservation #{id} date has been changed.");
             return Ok(new ApiResponse<string>("Reservation date changed"));
         }
-
-        public class CheckAvailabilityRequest
-        {
-            public int RoomId { get; set; }
-            public DateTime StartDate { get; set; }
-            public DateTime EndDate { get; set; }
-        }
-        public class ChangeDateRequest
-        {
-            public DateTime NewStart { get; set; }
-            public DateTime NewEnd { get; set; }
-        }
     }
 }

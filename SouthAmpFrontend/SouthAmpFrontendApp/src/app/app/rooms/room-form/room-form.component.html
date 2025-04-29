@@ -1,0 +1,33 @@
+<form [formGroup]="roomForm" (ngSubmit)="onSubmit()">
+  <h2>
+    {{
+      isEdit
+        ? ("ROOMS.EDIT_TITLE" | translate)
+        : ("ROOMS.ADD_TITLE" | translate)
+    }}
+  </h2>
+  <div>
+    <label>{{ "ROOMS.NAME" | translate }}</label>
+    <input formControlName="name" type="text" />
+  </div>
+  <div>
+    <label>{{ "ROOMS.DESCRIPTION" | translate }}</label>
+    <textarea formControlName="description"></textarea>
+  </div>
+  <div>
+    <label>{{ "ROOMS.PRICE" | translate }}</label>
+    <input formControlName="price" type="number" min="0" />
+  </div>
+  <div>
+    <label>{{ "ROOMS.AVAILABLE" | translate }}</label>
+    <input formControlName="available" type="checkbox" />
+  </div>
+  <div>
+    <label>{{ "ROOMS.IMAGES" | translate }}</label>
+    <input formControlName="images" type="text" placeholder="url1, url2, ..." />
+  </div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+  <button type="submit" [disabled]="loading">
+    {{ isEdit ? ("ROOMS.SAVE" | translate) : ("ROOMS.ADD" | translate) }}
+  </button>
+</form>

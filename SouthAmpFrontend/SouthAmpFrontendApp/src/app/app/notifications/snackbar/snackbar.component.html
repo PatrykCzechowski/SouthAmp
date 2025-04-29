@@ -1,0 +1,7 @@
+<div
+  *ngIf="visible && notification"
+  class="snackbar"
+  [ngClass]="notification.type"
+>
+  {{ notification.message | translate }}
+</div>

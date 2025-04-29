@@ -1,0 +1,32 @@
+<div *ngIf="loading">{{ "PAYMENTS.DETAILS_LOADING" | translate }}</div>
+<div *ngIf="error" class="error">{{ error }}</div>
+<div *ngIf="payment && !loading && !error">
+  <h2>{{ "PAYMENTS.DETAILS_TITLE" | translate }} #{{ payment.id }}</h2>
+  <p>
+    <strong>{{ "PAYMENTS.RESERVATION" | translate }}:</strong>
+    {{ payment.reservationId }}
+  </p>
+  <p>
+    <strong>{{ "PAYMENTS.AMOUNT" | translate }}:</strong>
+    {{ payment.amount }} PLN
+  </p>
+  <p>
+    <strong>{{ "PAYMENTS.STATUS" | translate }}:</strong> {{ payment.status }}
+  </p>
+  <p>
+    <strong>{{ "PAYMENTS.CREATED" | translate }}:</strong>
+    {{ payment.createdAt }}
+  </p>
+  <p>
+    <strong>{{ "PAYMENTS.UPDATED" | translate }}:</strong>
+    {{ payment.updatedAt }}
+  </p>
+  <div *ngIf="payment.status === 'completed'">
+    <button (click)="refundPayment()">
+      {{ "PAYMENTS.REFUND" | translate }}
+    </button>
+  </div>
+  <div *ngIf="refundSuccess" class="success">
+    {{ "PAYMENTS.REFUND_SUCCESS" | translate }}
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<div *ngIf="loading">Ładowanie szczegółów zgłoszenia...</div>
+<div *ngIf="error" class="error">{{ error }}</div>
+<div *ngIf="report && !loading && !error">
+  <h2>Szczegóły zgłoszenia #{{ report.id }}</h2>
+  <p><strong>Typ:</strong> {{ report.type }}</p>
+  <p><strong>Opis:</strong> {{ report.description }}</p>
+  <p><strong>Status:</strong> {{ report.status }}</p>
+  <p>
+    <strong>Data zgłoszenia:</strong>
+    {{ report.createdAt | date : "yyyy-MM-dd" }}
+  </p>
+  <div *ngIf="report.adminResponse">
+    <p><strong>Odpowiedź admina:</strong> {{ report.adminResponse }}</p>
+  </div>
+  <form
+    [formGroup]="responseForm"
+    (ngSubmit)="sendResponse()"
+    *ngIf="!report.adminResponse"
+  >
+    <label>Odpowiedź admina</label>
+    <textarea formControlName="adminResponse"></textarea>
+    <button type="submit" [disabled]="loading">Wyślij odpowiedź</button>
+  </form>
+  <div *ngIf="responseSuccess" class="success">Odpowiedź została wysłana.</div>
+</div>

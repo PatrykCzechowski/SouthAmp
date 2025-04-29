@@ -1,0 +1,30 @@
+<div *ngIf="loading">{{ "ROOMS.DETAILS_LOADING" | translate }}</div>
+<div *ngIf="error" class="error">{{ error }}</div>
+<div *ngIf="room && !loading && !error">
+  <h2>{{ room.name }}</h2>
+  <p>
+    <strong>{{ "ROOMS.PRICE" | translate }}:</strong> {{ room.price }} PLN
+  </p>
+  <p>
+    <strong>{{ "ROOMS.DESCRIPTION" | translate }}:</strong>
+    {{ room.description }}
+  </p>
+  <p>
+    <strong>{{ "ROOMS.AVAILABLE" | translate }}:</strong>
+    {{ room.available ? ("ROOMS.YES" | translate) : ("ROOMS.NO" | translate) }}
+  </p>
+  <div *ngIf="room.images && room.images.length">
+    <strong>{{ "ROOMS.IMAGES" | translate }}:</strong>
+    <div>
+      <img
+        *ngFor="let img of room.images"
+        [src]="img"
+        alt="room image"
+        width="120"
+        style="margin: 4px"
+      />
+    </div>
+  </div>
+  <button (click)="editRoom()">{{ "ROOMS.EDIT" | translate }}</button>
+  <button (click)="deleteRoom()">{{ "ROOMS.DELETE" | translate }}</button>
+</div>

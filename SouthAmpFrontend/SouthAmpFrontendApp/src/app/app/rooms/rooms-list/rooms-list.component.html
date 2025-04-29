@@ -1,0 +1,17 @@
+<div *ngIf="loading">{{ "ROOMS.LOADING" | translate }}</div>
+<div *ngIf="error" class="error">{{ error }}</div>
+<ul *ngIf="!loading && !error">
+  <li
+    *ngFor="let room of rooms"
+    (click)="goToDetails(room)"
+    style="cursor: pointer"
+  >
+    <strong>{{ room.name }}</strong> | {{ "ROOMS.PRICE" | translate }}:
+    {{ room.price }} PLN
+    <span *ngIf="!room.available" class="unavailable"
+      >({{ "ROOMS.UNAVAILABLE" | translate }})</span
+    >
+    <br />
+    <span>{{ room.description }}</span>
+  </li>
+</ul>

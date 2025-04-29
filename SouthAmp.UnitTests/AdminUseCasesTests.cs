@@ -4,6 +4,7 @@ using Moq;
 using SouthAmp.Application.UseCases;
 using SouthAmp.Core.Entities;
 using SouthAmp.Core.Interfaces;
+using SouthAmp.Infrastructure.Identity;
 using Xunit;
 
 namespace SouthAmp.UnitTests
@@ -25,7 +26,7 @@ namespace SouthAmp.UnitTests
         public async Task GetAllUsersAsync_ReturnsUsers()
         {
             var users = new List<AppUserProfile> { new AppUserProfile() };
-            _userRepoMock.Setup(r => r.GetAllAsync()).ReturnsAsync(users);
+            _userRepoMock.Setup(r => r.GetAllAsync()).ReturnsAsync(new List<AppUser>());
             var result = await _sut.GetAllUsersAsync();
             Assert.Single(result);
         }
@@ -43,7 +44,7 @@ namespace SouthAmp.UnitTests
         [Fact]
         public async Task BanUserAsync_DoesNothing_WhenUserNull()
         {
-            _userRepoMock.Setup(r => r.GetByIdAsync(1)).ReturnsAsync((AppUserProfile)null);
+            _userRepoMock.Setup(r => r.GetByIdAsync(1)).ReturnsAsync((AppUserProfile?)null!);
             await _sut.BanUserAsync(1);
             _userRepoMock.Verify(r => r.UpdateAsync(It.IsAny<AppUserProfile>()), Times.Never);
         }
@@ -61,7 +62,7 @@ namespace SouthAmp.UnitTests
         [Fact]
         public async Task ActivateUserAsync_DoesNothing_WhenUserNull()
         {
-            _userRepoMock.Setup(r => r.GetByIdAsync(1)).ReturnsAsync((AppUserProfile)null);
+            _userRepoMock.Setup(r => r.GetByIdAsync(1)).ReturnsAsync((AppUserProfile?)null!);
             await _sut.ActivateUserAsync(1);
             _userRepoMock.Verify(r => r.UpdateAsync(It.IsAny<AppUserProfile>()), Times.Never);
         }
@@ -96,7 +97,7 @@ namespace SouthAmp.UnitTests
         [Fact]
         public async Task ModerateHotelAsync_DoesNothing_WhenHotelNull()
         {
-            _hotelRepoMock.Setup(r => r.GetByIdAsync(1)).ReturnsAsync((Hotel)null);
+            _hotelRepoMock.Setup(r => r.GetByIdAsync(1)).ReturnsAsync((Hotel?)null!);
             await _sut.ModerateHotelAsync(1, true);
             _hotelRepoMock.Verify(r => r.UpdateAsync(It.IsAny<Hotel>()), Times.Never);
         }
@@ -123,7 +124,7 @@ namespace SouthAmp.UnitTests
         [Fact]
         public async Task ModerateReviewAsync_DoesNothing_WhenReviewNull()
         {
-            _reviewRepoMock.Setup(r => r.GetByIdAsync(1)).ReturnsAsync((Review)null);
+            _reviewRepoMock.Setup(r => r.GetByIdAsync(1)).ReturnsAsync((Review?)null!);
             await _sut.ModerateReviewAsync(1, true);
             _reviewRepoMock.Verify(r => r.UpdateAsync(It.IsAny<Review>()), Times.Never);
         }

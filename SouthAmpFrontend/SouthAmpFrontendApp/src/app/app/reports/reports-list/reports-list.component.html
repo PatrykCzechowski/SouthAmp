@@ -1,0 +1,22 @@
+<div *ngIf="loading">Ładowanie zgłoszeń...</div>
+<div *ngIf="error" class="error">{{ error }}</div>
+<table *ngIf="!loading && !error">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Typ</th>
+      <th>Opis</th>
+      <th>Status</th>
+      <th>Data</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let report of reports">
+      <td>{{ report.id }}</td>
+      <td>{{ report.type }}</td>
+      <td>{{ report.description }}</td>
+      <td>{{ report.status }}</td>
+      <td>{{ report.createdAt | date : "yyyy-MM-dd" }}</td>
+    </tr>
+  </tbody>
+</table>

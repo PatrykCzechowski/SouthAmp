@@ -59,8 +59,6 @@ namespace SouthAmp.Web.Controllers
         public async Task<IActionResult> GetReviewById(int id)
         {
             var review = await useCases.GetReviewByIdAsync(id);
-            if (review == null)
-                return NotFound(new ApiResponse<string>("Review not found"));
             return Ok(new ApiResponse<ReviewDto>(mapper.Map<ReviewDto>(review)));
         }
 

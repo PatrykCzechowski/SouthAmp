@@ -34,8 +34,6 @@ namespace SouthAmp.Web.Controllers
         public async Task<IActionResult> GetLocationById(int id)
         {
             var location = await useCases.GetLocationByIdAsync(id);
-            if (location == null)
-                return NotFound(new ApiResponse<string>("Location not found"));
             return Ok(new ApiResponse<LocationDto>(mapper.Map<LocationDto>(location)));
         }
 

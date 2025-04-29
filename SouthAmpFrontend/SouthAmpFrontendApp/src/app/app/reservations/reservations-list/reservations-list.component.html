@@ -1,0 +1,26 @@
+<div *ngIf="loading">{{ "RESERVATIONS.LOADING" | translate }}</div>
+<div *ngIf="error" class="error">{{ error }}</div>
+<ul *ngIf="!loading && !error">
+  <li
+    *ngFor="let reservation of reservations"
+    (click)="goToDetails(reservation)"
+    style="cursor: pointer"
+  >
+    <strong>{{ "RESERVATIONS.ID" | translate }}:</strong> {{ reservation.id }} |
+    <strong>{{ "RESERVATIONS.ROOM" | translate }}:</strong>
+    {{ reservation.roomId }} |
+    <strong>{{ "RESERVATIONS.HOTEL" | translate }}:</strong>
+    {{ reservation.hotelId }}<br />
+    <span
+      >{{ "RESERVATIONS.DATE" | translate }}: {{ reservation.startDate }} -
+      {{ reservation.endDate }}</span
+    >
+    <span>
+      | {{ "RESERVATIONS.STATUS" | translate }}: {{ reservation.status }}</span
+    >
+    <span>
+      | {{ "RESERVATIONS.TOTAL" | translate }}:
+      {{ reservation.totalPrice }} PLN</span
+    >
+  </li>
+</ul>

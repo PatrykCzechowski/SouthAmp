@@ -1,0 +1,22 @@
+<div *ngIf="loading">{{ "HOTELS.DETAILS_LOADING" | translate }}</div>
+<div *ngIf="error" class="error">{{ error }}</div>
+<div *ngIf="hotel && !loading && !error">
+  <h2>{{ hotel.name }}</h2>
+  <img
+    *ngIf="hotel.imageUrl"
+    [src]="hotel.imageUrl"
+    alt="{{ hotel.name }}"
+    width="200"
+  />
+  <p>
+    <strong>{{ "HOTELS.LOCATION" | translate }}:</strong> {{ hotel.location }}
+  </p>
+  <p>
+    <strong>{{ "HOTELS.DESCRIPTION" | translate }}:</strong>
+    {{ hotel.description }}
+  </p>
+  <p *ngIf="hotel.rating">
+    <strong>{{ "HOTELS.RATING" | translate }}:</strong> {{ hotel.rating }}
+  </p>
+  <!-- Tu można dodać sekcje: pokoje, opinie, zdjęcia, itp. -->
+</div>
